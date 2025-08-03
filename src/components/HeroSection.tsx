@@ -14,8 +14,8 @@ const HeroSection = () => {
         <div className="relative">
           {/* Main title with mystical styling */}
           <AncientTitle level={1} className="mb-6 relative">
-            <span className="relative z-10">NIKERMANA</span>
-            <div className="absolute inset-0 text-mystical-glow opacity-50 blur-sm">NIKERMANA</div>
+            <span className="relative z-10">NIKRMANA</span>
+            <div className="absolute inset-0 text-mystical-glow opacity-50 blur-sm">NIKRMANA</div>
           </AncientTitle>
           
           <OrnamentalDivider />
