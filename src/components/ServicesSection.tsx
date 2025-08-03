@@ -12,6 +12,7 @@ interface Service {
   description: string;
   duration_minutes: number;
   price: number;
+  type: string;
 }
 
 const ServicesSection = () => {
