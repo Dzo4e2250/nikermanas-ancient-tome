@@ -14,6 +14,12 @@ import { useToast } from "@/hooks/use-toast";
 import AncientTitle from "./AncientTitle";
 import MysticalCard from "./MysticalCard";
 
+// Import generirane karikaturne slike
+import individualnaCartoon from "@/assets/individualna-terapija-cartoon.png";
+import paraterapijaCartoon from "/lovable-uploads/a17a69f7-5e9f-43e2-93cf-dc640f3d8db6.png";
+import skupinskaCartoon from "@/assets/skupinska-terapija-cartoon.jpg";
+import brezplacnaCartoon from "@/assets/brezplacna-ocena-cartoon.jpg";
+
 interface MysticalCardProps {
   children: React.ReactNode;
   className?: string;
@@ -50,6 +56,7 @@ interface Service {
   duration_minutes: number;
   price: number;
   type: string;
+  image_url?: string;
 }
 
 interface Question {
@@ -270,6 +277,28 @@ const BookingDialog = ({ open, onOpenChange, selectedService }: BookingDialogPro
     setSelectedTime("");
     setSelectedEvent(undefined);
     setContactInfo({ name: "", email: "", phone: "", message: "" });
+  };
+
+  // Funkcija za pridobitev slike storitve
+  const getServiceImage = (service: Service) => {
+    // Če ima storitev naloženo sliko, uporabi to
+    if (service.image_url) {
+      return service.image_url;
+    }
+    
+    // Sicer uporabi generirane karikaturne slike
+    switch (service.type) {
+      case 'individual':
+        return service.name.includes('Paraterapija') 
+          ? paraterapijaCartoon
+          : individualnaCartoon;
+      case 'group':
+        return skupinskaCartoon;
+      case 'assessment':
+        return brezplacnaCartoon;
+      default:
+        return individualnaCartoon;
+    }
   };
 
   const renderQuestionnaire = () => (
@@ -510,6 +539,17 @@ const BookingDialog = ({ open, onOpenChange, selectedService }: BookingDialogPro
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
         <DialogHeader>
+          {/* Slika storitve kot naslovnica */}
+          {selectedService && (
+            <div className="mb-4 overflow-hidden rounded-lg mystical-frame">
+              <img 
+                src={getServiceImage(selectedService)}
+                alt={selectedService.name}
+                className="w-full h-32 object-cover"
+              />
+            </div>
+          )}
+          
           <DialogTitle className="font-gothic text-2xl text-center">
             {selectedService?.name}
           </DialogTitle>
