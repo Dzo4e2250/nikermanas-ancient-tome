@@ -50,6 +50,9 @@ const ServicesSection = () => {
 
   // Funkcija za pridobitev generirane karikaturne slike glede na tip storitve
   const getServiceImage = (serviceType: string, serviceName: string) => {
+    console.log('Service type:', serviceType, 'Service name:', serviceName);
+    console.log('Individual cartoon path:', individualnaCartoon);
+    
     switch (serviceType) {
       case 'individual':
         return serviceName.includes('Paraterapija') 
