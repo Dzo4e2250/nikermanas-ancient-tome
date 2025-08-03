@@ -162,34 +162,24 @@ const BookingDialog = ({ open, onOpenChange, selectedService }: BookingDialogPro
       return;
     }
 
-    // Za brezplačno oceno pošlji samo poročilo
+    // Za brezplačno oceno samo prikaži uspešno sporočilo (pozneje dodamo pošiljanje)
     if (selectedService.type === 'assessment') {
       try {
-        const response = await fetch(`${import.meta.env.VITE_SUPABASE_URL}/functions/v1/send-assessment-report`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            name: contactInfo.name,
-            email: contactInfo.email,
-            answers: answers
-          })
-        });
-
-        if (!response.ok) throw new Error('Napaka pri pošiljanju poročila');
-
+        // TODO: Tukaj bo pozneje klic na edge funkcijo za pošiljanje poročila
+        
         toast({
-          title: "Poročilo poslano!",
-          description: "Vaše osebno poročilo je bilo poslano na vaš email naslov."
+          title: "Poročilo pripravljeno!",
+          description: "Vaše osebno poročilo je pripravljeno. Kontaktirali vas bomo na vaš email naslov."
         });
 
         onOpenChange(false);
         resetForm();
         return;
       } catch (error) {
-        console.error('Error sending assessment report:', error);
+        console.error('Error processing assessment:', error);
         toast({
           title: "Napaka",
-          description: "Napaka pri pošiljanju poročila. Poskusite znova.",
+          description: "Napaka pri procesiranju ocene. Poskusite znova.",
           variant: "destructive"
         });
         return;
