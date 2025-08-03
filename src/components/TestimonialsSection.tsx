@@ -52,47 +52,53 @@ const TestimonialsSection = () => {
         
         <OrnamentalDivider />
         
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
+        <div className="grid md:grid-cols-2 gap-6 mt-12">
           {testimonials.map((testimonial, index) => (
             <div 
               key={index} 
               className="group animate-fade-in hover-scale"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
-              <MysticalCard className="h-full flex flex-col relative overflow-hidden">
+              <MysticalCard className="h-full relative overflow-hidden">
                 {/* Dekorativni gradient overlay */}
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
                 
-                {/* Avatar, ime in kraj na vrhu */}
-                <div className="text-center mb-6 relative z-10">
-                  <div className="relative inline-block">
-                    <Avatar className="w-20 h-20 border-3 border-ornament/30 mx-auto mb-4 shadow-lg group-hover:shadow-xl transition-shadow duration-300">
-                      <AvatarImage src={testimonial.avatar} alt={testimonial.author} className="object-cover" />
-                      <AvatarFallback className="bg-gradient-to-br from-ornament/20 to-ornament/10 text-ornament font-gothic text-lg">
-                        {testimonial.author.split(' ').map(n => n[0]).join('')}
-                      </AvatarFallback>
-                    </Avatar>
-                    {/* Svetlikajoči obroč za hover */}
-                    <div className="absolute inset-0 rounded-full border-2 border-primary/30 opacity-0 group-hover:opacity-100 scale-110 transition-all duration-300" />
+                {/* Landscape layout - avatar levo, besedilo desno */}
+                <div className="flex items-start gap-4 relative z-10">
+                  {/* Avatar sekcija */}
+                  <div className="flex-shrink-0">
+                    <div className="relative">
+                      <Avatar className="w-16 h-16 border-3 border-ornament/30 shadow-lg group-hover:shadow-xl transition-shadow duration-300">
+                        <AvatarImage src={testimonial.avatar} alt={testimonial.author} className="object-cover" />
+                        <AvatarFallback className="bg-gradient-to-br from-ornament/20 to-ornament/10 text-ornament font-gothic">
+                          {testimonial.author.split(' ').map(n => n[0]).join('')}
+                        </AvatarFallback>
+                      </Avatar>
+                      {/* Svetlikajoči obroč za hover */}
+                      <div className="absolute inset-0 rounded-full border-2 border-primary/30 opacity-0 group-hover:opacity-100 scale-110 transition-all duration-300" />
+                    </div>
+                    
+                    {/* Ime in lokacija pod avatarjem */}
+                    <div className="mt-3 text-center">
+                      <h4 className="font-gothic text-sm text-ornament font-semibold group-hover:text-primary transition-colors duration-300">
+                        {testimonial.author}
+                      </h4>
+                      <p className="font-ancient text-xs text-muted-foreground mt-1">
+                        {testimonial.location}
+                      </p>
+                    </div>
                   </div>
                   
-                  <h4 className="font-gothic text-lg text-ornament font-semibold mb-1 group-hover:text-primary transition-colors duration-300">
-                    {testimonial.author}
-                  </h4>
-                  <p className="font-ancient text-sm text-muted-foreground flex items-center justify-center gap-1">
-                    <span className="w-1 h-1 bg-ornament/50 rounded-full"></span>
-                    {testimonial.location}
-                    <span className="w-1 h-1 bg-ornament/50 rounded-full"></span>
-                  </p>
-                </div>
-                
-                {/* Citat z boljšo tipografijo */}
-                <div className="flex-1 relative z-10">
-                  <div className="text-4xl text-ornament/30 mb-3 text-center leading-none">"</div>
-                  <blockquote className="font-ancient text-muted-foreground leading-relaxed italic text-center relative">
-                    <span className="relative z-10">{testimonial.text}</span>
-                  </blockquote>
-                  <div className="text-4xl text-ornament/30 mt-3 text-center leading-none rotate-180">"</div>
+                  {/* Besedilo desno */}
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-start">
+                      <div className="text-2xl text-ornament/40 mr-2 leading-none flex-shrink-0">"</div>
+                      <blockquote className="font-ancient text-muted-foreground leading-relaxed italic flex-1">
+                        {testimonial.text}
+                      </blockquote>
+                      <div className="text-2xl text-ornament/40 ml-2 leading-none rotate-180 flex-shrink-0 self-end">"</div>
+                    </div>
+                  </div>
                 </div>
                 
                 {/* Dekorativna črta na dnu */}
