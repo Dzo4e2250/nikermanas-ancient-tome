@@ -62,19 +62,22 @@ const ServicesSection = () => {
               </p>
               <div className="space-y-3 mt-4">
                 <div className="bg-accent/20 p-3 rounded-lg border border-ornament/30">
+                  {service.duration_minutes > 0 && (
+                    <p className="text-sm font-gothic text-accent-foreground">
+                      <span className="font-medium">Trajanje:</span> {service.duration_minutes} min
+                    </p>
+                  )}
                   <p className="text-sm font-gothic text-accent-foreground">
-                    <span className="font-medium">Trajanje:</span> {service.duration_minutes} min
-                  </p>
-                  <p className="text-sm font-gothic text-accent-foreground">
-                    <span className="font-medium">Cena:</span> {service.price}€
+                    <span className="font-medium">Cena:</span> {service.price > 0 ? `${service.price}€` : 'BREZPLAČNO'}
                   </p>
                 </div>
                 <Button 
                   onClick={() => handleServiceClick(service)}
                   className="w-full"
                   size="lg"
+                  variant={service.price === 0 ? "default" : "outline"}
                 >
-                  Rezerviraj termin
+                  {service.type === 'assessment' ? 'Začni oceno' : 'Rezerviraj termin'}
                 </Button>
               </div>
             </MysticalCard>
