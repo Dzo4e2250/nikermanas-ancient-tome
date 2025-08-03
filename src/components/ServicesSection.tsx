@@ -1,30 +1,46 @@
+import { useState, useEffect } from "react";
+import { Button } from "@/components/ui/button";
+import { supabase } from "@/integrations/supabase/client";
 import AncientTitle from "./AncientTitle";
 import MysticalCard from "./MysticalCard";
 import OrnamentalDivider from "./OrnamentalDivider";
+import BookingDialog from "./BookingDialog";
+
+interface Service {
+  id: string;
+  name: string;
+  description: string;
+  duration_minutes: number;
+  price: number;
+}
 
 const ServicesSection = () => {
-  const services = [
-    {
-      title: "Individualna Energoterapija",
-      description: "Nežen dotik za vzpostavljanje ravnovesja, odpravljanje blokad in dvig vibracije. Pomoč pri fizičnih bolečinah, izčrpanosti, stresu, tesnobah in travmah.",
-      note: "Prva terapija brezplačna"
-    },
-    {
-      title: "Skupinska Energoterapija",
-      description: "Sinergija ženskega, moškega principa in živalske modrosti. Tanja - intuitivna kot voda, Edo - stabilen kot zemlja, Santiago - srčni varuh. Skupaj ustvarjamo varen prostor ljubezni.",
-      note: "Dotik Nikrmane s Santiagom"
-    },
-    {
-      title: "Transformativne Meditacije",
-      description: "Vodene meditacije za premagovanie življenjskih izzivov, stresa in strahu. Pot do opolnomočenja in boljšega stika s srcem.",
-      note: "Sprosti • Preobrazi • Prebudi"
-    },
-    {
-      title: "Ženske Delavnice",
-      description: "Intenzivna delavnica 'ONA – ena ženska s tisočerimi obrazi' za raziskovanje ženskih arhetipov in prebujanje notranje moči.",
-      note: "Omejen broj mest"
+  const [services, setServices] = useState<Service[]>([]);
+  const [selectedService, setSelectedService] = useState<Service | undefined>();
+  const [bookingDialogOpen, setBookingDialogOpen] = useState(false);
+
+  useEffect(() => {
+    fetchServices();
+  }, []);
+
+  const fetchServices = async () => {
+    try {
+      const { data, error } = await (supabase as any)
+        .from('services')
+        .select('*')
+        .eq('is_active', true);
+      
+      if (error) throw error;
+      setServices(data || []);
+    } catch (error) {
+      console.error('Error fetching services:', error);
     }
-  ];
+  };
+
+  const handleServiceClick = (service: Service) => {
+    setSelectedService(service);
+    setBookingDialogOpen(true);
+  };
 
   return (
     <section className="py-16 bg-parchment">
@@ -36,16 +52,30 @@ const ServicesSection = () => {
         <OrnamentalDivider />
         
         <div className="grid md:grid-cols-2 gap-8 mt-12">
-          {services.map((service, index) => (
-            <MysticalCard key={index} className="h-full">
+          {services.map((service) => (
+            <MysticalCard key={service.id} className="h-full">
               <AncientTitle level={3} className="mb-4 text-left">
-                {service.title}
+                {service.name}
               </AncientTitle>
               <p className="font-ancient text-muted-foreground leading-relaxed mb-4">
                 {service.description}
               </p>
-              <div className="text-sm font-ancient italic text-ornament border-t border-ornament/30 pt-3">
-                {service.note}
+              <div className="space-y-3 mt-4">
+                <div className="bg-accent/20 p-3 rounded-lg border border-ornament/30">
+                  <p className="text-sm font-gothic text-accent-foreground">
+                    <span className="font-medium">Trajanje:</span> {service.duration_minutes} min
+                  </p>
+                  <p className="text-sm font-gothic text-accent-foreground">
+                    <span className="font-medium">Cena:</span> {service.price}€
+                  </p>
+                </div>
+                <Button 
+                  onClick={() => handleServiceClick(service)}
+                  className="w-full"
+                  size="lg"
+                >
+                  Rezerviraj termin
+                </Button>
               </div>
             </MysticalCard>
           ))}
@@ -58,6 +88,12 @@ const ServicesSection = () => {
           </p>
         </div>
       </div>
+
+      <BookingDialog 
+        open={bookingDialogOpen}
+        onOpenChange={setBookingDialogOpen}
+        selectedService={selectedService}
+      />
     </section>
   );
 };
