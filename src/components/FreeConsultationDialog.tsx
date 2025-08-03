@@ -106,59 +106,63 @@ const FreeConsultationDialog = ({ open, onOpenChange }: FreeConsultationDialogPr
           <div className="text-center space-y-4 p-6 bg-gradient-to-br from-primary/10 to-secondary/10 rounded-lg border border-primary/20">
             <h3 className="font-ancient text-lg text-primary">Starodavni Ritual Pregleda Duše</h3>
             <div className="space-y-3 text-sm text-muted-foreground font-ancient italic">
-              <p>🌟 <strong>Trenutna Pregledna Terapija</strong> - brez dolgotrajnih pogovorov, neposredno v srce stvari</p>
-              <p>🔮 <strong>Vse kar potrebujete je Odprtost</strong> - prepustite se starinski modrosti energij</p>
-              <p>💫 <strong>Popolna Predanost Procesu</strong> - dovolite, da vas vodimo skozi skrivnosti vaše notranjosti</p>
-              <p>🌱 <strong>Po Terapiji Kratek Pogovor</strong> - razjasnimo, kar se je v vas prebudilo</p>
-              <p>🎁 <strong>Darilo Naših Pradedov</strong> - brezplačno, kot so nekoč delili modrosti</p>
+              <p><strong>Trenutna Pregledna Terapija</strong> - brez dolgotrajnih pogovorov, neposredno v srce stvari</p>
+              <p><strong>Vse kar potrebujete je Odprtost</strong> - prepustite se starinski modrosti energij</p>
+              <p><strong>Popolna Predanost Procesu</strong> - dovolite, da vas vodimo skozi skrivnosti vaše notranjosti</p>
+              <p><strong>Po Terapiji Kratek Pogovor</strong> - razjasnimo, kar se je v vas prebudilo</p>
+              <p><strong>Darilo Naših Pradedov</strong> - brezplačno, kot so nekoč delili modrosti</p>
+              <p className="text-primary font-semibold mt-4">Po izbiri termina boste prejeli Google Meet link za potrditev terapije</p>
             </div>
           </div>
 
-          {/* Date Selection */}
-          <div className="space-y-2">
-            <Label className="font-ancient">Izberite datum</Label>
-            <Popover>
-              <PopoverTrigger asChild>
-                <Button
-                  variant="outline"
-                  className={cn(
-                    "w-full justify-start text-left font-normal",
-                    !selectedDate && "text-muted-foreground"
-                  )}
-                >
-                  <CalendarIcon className="mr-2 h-4 w-4" />
-                  {selectedDate ? format(selectedDate, "PPP", { locale: sl }) : "Izberite datum"}
-                </Button>
-              </PopoverTrigger>
-              <PopoverContent className="w-auto p-0" align="start">
-                <Calendar
-                  mode="single"
-                  selected={selectedDate}
-                  onSelect={setSelectedDate}
-                  disabled={(date) => date < new Date() || date.getDay() === 0}
-                  initialFocus
-                  className="pointer-events-auto"
-                />
-              </PopoverContent>
-            </Popover>
-          </div>
+          {/* Date and Time Selection Grid */}
+          <div className="grid md:grid-cols-2 gap-6">
+            {/* Date Selection */}
+            <div className="space-y-2">
+              <Label className="font-ancient">Izberite datum</Label>
+              <Popover>
+                <PopoverTrigger asChild>
+                  <Button
+                    variant="outline"
+                    className={cn(
+                      "w-full justify-start text-left font-normal h-auto py-3",
+                      !selectedDate && "text-muted-foreground"
+                    )}
+                  >
+                    <CalendarIcon className="mr-2 h-4 w-4" />
+                    {selectedDate ? format(selectedDate, "PPP", { locale: sl }) : "Izberite datum"}
+                  </Button>
+                </PopoverTrigger>
+                <PopoverContent className="w-auto p-0" align="start">
+                  <Calendar
+                    mode="single"
+                    selected={selectedDate}
+                    onSelect={setSelectedDate}
+                    disabled={(date) => date < new Date() || date.getDay() === 0}
+                    initialFocus
+                    className="pointer-events-auto"
+                  />
+                </PopoverContent>
+              </Popover>
+            </div>
 
-          {/* Time Selection */}
-          <div className="space-y-2">
-            <Label className="font-ancient">Izberite uro</Label>
-            <div className="grid grid-cols-3 gap-2">
-              {timeSlots.map((time) => (
-                <Button
-                  key={time}
-                  variant={selectedTime === time ? "default" : "outline"}
-                  size="sm"
-                  onClick={() => setSelectedTime(time)}
-                  className="font-ancient"
-                >
-                  <Clock className="mr-1 h-3 w-3" />
-                  {time}
-                </Button>
-              ))}
+            {/* Time Selection */}
+            <div className="space-y-2">
+              <Label className="font-ancient">Izberite uro</Label>
+              <div className="grid grid-cols-2 gap-2 max-h-48 overflow-y-auto">
+                {timeSlots.map((time) => (
+                  <Button
+                    key={time}
+                    variant={selectedTime === time ? "default" : "outline"}
+                    size="sm"
+                    onClick={() => setSelectedTime(time)}
+                    className="font-ancient h-10"
+                  >
+                    <Clock className="mr-1 h-3 w-3" />
+                    {time}
+                  </Button>
+                ))}
+              </div>
             </div>
           </div>
 
