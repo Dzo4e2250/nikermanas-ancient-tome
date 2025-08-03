@@ -92,7 +92,7 @@ const ServicesSection = () => {
           {services.map((service) => (
             <MysticalCard key={service.id} className="h-full flex flex-col">
               {/* Generirana karikaturna slika */}
-              <div className="mb-4 overflow-hidden rounded-lg">
+              <div className="mb-4 overflow-hidden rounded-lg mystical-frame">
                 <img 
                   src={getServiceImage(service)}
                   alt={service.name}

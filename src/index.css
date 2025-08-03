@@ -48,7 +48,10 @@ All colors MUST be HSL.
     /* Custom mystical variables */
     --ornament: 0 0% 25%;
     --parchment: 45 30% 92%;
-    --ancient-text: 0 0% 12%;
+    --ancient-text: 45 15% 35%;
+    --ancient-gold: 45 85% 55%;
+    --ancient-gold-light: 50 90% 65%;
+    --ancient-gold-dark: 40 75% 45%;
     --mystical-glow: 0 0% 85%;
     --shadow-deep: 0 0% 0%;
     
@@ -126,5 +129,59 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+  }
+  
+  /* Mistični okrasni okvir za slike */
+  .mystical-frame {
+    position: relative;
+    padding: 12px;
+    background: linear-gradient(135deg, 
+      hsl(var(--ancient-gold)), 
+      hsl(var(--ancient-gold-light)), 
+      hsl(var(--ancient-gold))
+    );
+    border-radius: 16px;
+    box-shadow: 
+      0 0 20px hsl(var(--ancient-gold) / 0.3),
+      inset 0 0 20px hsl(var(--ancient-gold) / 0.1),
+      0 4px 15px rgba(0, 0, 0, 0.2);
+  }
+
+  .mystical-frame::before {
+    content: '';
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    right: 6px;
+    bottom: 6px;
+    border: 2px solid hsl(var(--ancient-gold-dark));
+    border-radius: 12px;
+    background: linear-gradient(45deg, 
+      transparent 30%, 
+      hsl(var(--ancient-gold) / 0.1) 50%, 
+      transparent 70%
+    );
+  }
+
+  .mystical-frame::after {
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    right: 3px;
+    bottom: 3px;
+    border: 1px solid hsl(var(--ancient-gold-light));
+    border-radius: 14px;
+    background: radial-gradient(circle at 30% 30%, 
+      hsl(var(--ancient-gold) / 0.2), 
+      transparent 60%
+    );
+  }
+
+  .mystical-frame img {
+    position: relative;
+    z-index: 2;
+    border-radius: 8px;
+    background: hsl(var(--parchment));
   }
 }
