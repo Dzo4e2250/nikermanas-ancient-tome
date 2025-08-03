@@ -18,6 +18,11 @@ export default {
 			}
 		},
 		extend: {
+			fontFamily: {
+				'gothic': ['Cinzel', 'serif'],
+				'ancient': ['Crimson Text', 'serif'],
+				'mystical': ['UnifrakturMaguntia', 'cursive'],
+			},
 			colors: {
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
@@ -61,7 +66,23 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
-				}
+				},
+				ornament: 'hsl(var(--ornament))',
+				parchment: 'hsl(var(--parchment))',
+				'ancient-text': 'hsl(var(--ancient-text))',
+				'mystical-glow': 'hsl(var(--mystical-glow))',
+				'shadow-deep': 'hsl(var(--shadow-deep))'
+			},
+			backgroundImage: {
+				'gradient-mystical': 'var(--gradient-mystical)',
+				'gradient-ancient': 'var(--gradient-ancient)',
+			},
+			boxShadow: {
+				'ornament': 'var(--shadow-ornament)',
+				'mystical': 'var(--shadow-mystical)',
+			},
+			transitionTimingFunction: {
+				'mystical': 'var(--transition-mystical)',
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
