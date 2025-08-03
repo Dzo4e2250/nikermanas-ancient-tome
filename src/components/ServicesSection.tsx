@@ -42,19 +42,21 @@ const ServicesSection = () => {
     setBookingDialogOpen(true);
   };
 
-  // Funkcija za pridobitev simbolične slike glede na tip storitve
-  const getServiceImage = (serviceType: string, serviceName: string) => {
+  // Funkcija za pridobitev skičnih placeholder slik glede na tip storitve
+  const getServicePlaceholder = (serviceType: string, serviceName: string) => {
+    const baseUrl = 'https://via.placeholder.com/600x200/f5f5dc/8b4513?text=';
+    
     switch (serviceType) {
       case 'individual':
         return serviceName.includes('Paraterapija') 
-          ? 'photo-1472396961693-142e6e269027' // Deer in nature - za travmo/ozdravljanje
-          : 'photo-1721322800607-8c38375eef04'; // Living room - za individualno terapijo
+          ? `${baseUrl}🌿+Paraterapija+Skica` // Narava/ozdravljanje
+          : `${baseUrl}👤+Individualna+Skica`; // Oseba
       case 'group':
-        return 'photo-1517022812141-23620dba5c23'; // Herd of sheep - za skupinsko terapijo
+        return `${baseUrl}👥+Skupinska+Skica`; // Skupina ljudi
       case 'assessment':
-        return 'photo-1581090464777-f3220bbe1b8b'; // Light bulb - za analizo/vpogled
+        return `${baseUrl}📊+Analiza+Skica`; // Analiza/vprašalnik
       default:
-        return 'photo-1472396961693-142e6e269027';
+        return `${baseUrl}❓+Storitev+Skica`;
     }
   };
 
@@ -70,13 +72,37 @@ const ServicesSection = () => {
         <div className="grid md:grid-cols-2 gap-8 mt-12">
           {services.map((service) => (
             <MysticalCard key={service.id} className="h-full flex flex-col">
-              {/* Simbolična slika */}
-              <div className="mb-4 overflow-hidden rounded-lg">
-                <img 
-                  src={`https://images.unsplash.com/${getServiceImage(service.type, service.name)}?auto=format&fit=crop&w=600&h=200&q=80`}
-                  alt={service.name}
-                  className="w-full h-48 object-cover"
-                />
+              {/* Placeholder skica - pozneje zamenjaj s pravo sliko */}
+              <div className="mb-4 overflow-hidden rounded-lg bg-gradient-to-br from-parchment to-accent/10 border-2 border-dashed border-ornament/30">
+                <div className="w-full h-48 flex items-center justify-center relative">
+                  {/* Skica ozadje */}
+                  <div className="absolute inset-0 opacity-5">
+                    <svg viewBox="0 0 100 100" className="w-full h-full">
+                      <defs>
+                        <pattern id="sketch-pattern" patternUnits="userSpaceOnUse" width="10" height="10">
+                          <path d="M0,5 Q5,0 10,5 Q5,10 0,5" stroke="#8b4513" strokeWidth="0.5" fill="none" opacity="0.3"/>
+                        </pattern>
+                      </defs>
+                      <rect width="100" height="100" fill="url(#sketch-pattern)"/>
+                    </svg>
+                  </div>
+                  
+                  {/* Ikone glede na tip storitve */}
+                  <div className="text-6xl text-ornament/40 z-10">
+                    {service.type === 'individual' && service.name.includes('Paraterapija') && '🌿'}
+                    {service.type === 'individual' && !service.name.includes('Paraterapija') && '👤'}
+                    {service.type === 'group' && '👥'}
+                    {service.type === 'assessment' && '📊'}
+                  </div>
+                  
+                  {/* Skica okvir */}
+                  <div className="absolute inset-2 border border-ornament/20 rounded-lg"></div>
+                  
+                  {/* "Skica" oznaka */}
+                  <div className="absolute top-2 right-2 bg-ornament/10 px-2 py-1 rounded text-xs font-gothic text-ornament/60">
+                    SKICA
+                  </div>
+                </div>
               </div>
               
               <AncientTitle level={3} className="mb-4 text-left">
