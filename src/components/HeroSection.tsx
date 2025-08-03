@@ -12,11 +12,12 @@ const HeroSection = () => {
       
       <div className="text-center max-w-4xl mx-auto px-6 relative z-10">
         <div className="relative">
-          {/* Main title with mystical styling */}
-          <AncientTitle level={1} className="mb-6 relative">
-            <span className="relative z-10">NIKRMANA</span>
-            <div className="absolute inset-0 text-mystical-glow opacity-50 blur-sm">NIKRMANA</div>
-          </AncientTitle>
+          {/* Main logo */}
+          <img 
+            src="/lovable-uploads/f1bc1069-4c8c-46a7-85d8-285882dbb31d.png" 
+            alt="NIKRMANA logo" 
+            className="w-auto h-32 md:h-48 mx-auto mb-6"
+          />
           
           <OrnamentalDivider />
           
