@@ -104,13 +104,13 @@ const FreeConsultationDialog = ({ open, onOpenChange }: FreeConsultationDialogPr
         <div className="space-y-6">
           {/* Description */}
           <div className="text-center space-y-4 p-6 bg-gradient-to-br from-primary/10 to-secondary/10 rounded-lg border border-primary/20">
-            <h3 className="font-ancient text-lg text-primary">Kaj vas čaka?</h3>
-            <div className="space-y-3 text-sm text-muted-foreground">
-              <p>✨ <strong>30-minutni osebni pogovor</strong> s Tanjo, Edom ali Santiagom</p>
-              <p>🔮 <strong>Spoznavanje z energoterapijo</strong> - kako deluje in kaj lahko pričakujete</p>
-              <p>🌱 <strong>Individualna ocena</strong> vaših potreb in življenjskih izzivov</p>
-              <p>💫 <strong>Personaliziran nasvet</strong> za vašo pot preobrazbe</p>
-              <p>🎁 <strong>Popolnoma brezplačno</strong> - brez obveznosti</p>
+            <h3 className="font-ancient text-lg text-primary">Starodavni Ritual Pregleda Duše</h3>
+            <div className="space-y-3 text-sm text-muted-foreground font-ancient italic">
+              <p>🌟 <strong>Trenutna Pregledna Terapija</strong> - brez dolgotrajnih pogovorov, neposredno v srce stvari</p>
+              <p>🔮 <strong>Vse kar potrebujete je Odprtost</strong> - prepustite se starinski modrosti energij</p>
+              <p>💫 <strong>Popolna Predanost Procesu</strong> - dovolite, da vas vodimo skozi skrivnosti vaše notranjosti</p>
+              <p>🌱 <strong>Po Terapiji Kratek Pogovor</strong> - razjasnimo, kar se je v vas prebudilo</p>
+              <p>🎁 <strong>Darilo Naših Pradedov</strong> - brezplačno, kot so nekoč delili modrosti</p>
             </div>
           </div>
 
