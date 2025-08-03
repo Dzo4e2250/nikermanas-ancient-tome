@@ -1,6 +1,7 @@
 import AncientTitle from "./AncientTitle";
 import MysticalCard from "./MysticalCard";
 import OrnamentalDivider from "./OrnamentalDivider";
+import BiographyDialog from "./BiographyDialog";
 import tanjaAvatar from "@/assets/tanja-avatar.jpg";
 import edoAvatar from "@/assets/edo-avatar.jpg";
 
@@ -20,15 +21,20 @@ const AboutSection = () => {
               <AncientTitle level={3} className="mb-4">
                 Tanja
               </AncientTitle>
-              <img 
-                src={tanjaAvatar} 
-                alt="Tanja - Ženski princip" 
-                className="w-32 h-32 mx-auto rounded-full mb-4 shadow-mystical object-cover border-2 border-ornament"
-              />
-              <p className="font-ancient text-muted-foreground leading-relaxed">
+              <BiographyDialog person="tanja" avatar={tanjaAvatar} name="Tanja">
+                <img 
+                  src={tanjaAvatar} 
+                  alt="Tanja - Ženski princip" 
+                  className="w-32 h-32 mx-auto rounded-full mb-4 shadow-mystical object-cover border-2 border-ornament cursor-pointer hover:scale-105 transition-transform duration-300"
+                />
+              </BiographyDialog>
+              <p className="font-ancient text-muted-foreground leading-relaxed mb-2">
                 <strong>Ženski princip</strong> - intuitivna, mehka in fluidna kot voda. 
                 Nosi energijo nežnosti in globokega razumevanja. 
                 Vodnica na poti k srčni povezanosti.
+              </p>
+              <p className="font-ancient text-xs text-ornament italic">
+                Kliknite na sliko za njeno polno zgodbo ✨
               </p>
             </div>
           </MysticalCard>
@@ -38,14 +44,19 @@ const AboutSection = () => {
               <AncientTitle level={3} className="mb-4">
                 Edo
               </AncientTitle>
-              <img 
-                src={edoAvatar} 
-                alt="Edo - Moški princip" 
-                className="w-32 h-32 mx-auto rounded-full mb-4 shadow-mystical object-cover border-2 border-ornament"
-              />
-              <p className="font-ancient text-muted-foreground leading-relaxed">
+              <BiographyDialog person="edo" avatar={edoAvatar} name="Edo">
+                <img 
+                  src={edoAvatar} 
+                  alt="Edo - Moški princip" 
+                  className="w-32 h-32 mx-auto rounded-full mb-4 shadow-mystical object-cover border-2 border-ornament cursor-pointer hover:scale-105 transition-transform duration-300"
+                />
+              </BiographyDialog>
+              <p className="font-ancient text-muted-foreground leading-relaxed mb-2">
                 <strong>Moški princip</strong> - predstavlja stabilnost, moč in prizemljenost. 
                 Temelj, ki omogoča varno raziskovanje notranjih svetov in preobrazbo.
+              </p>
+              <p className="font-ancient text-xs text-ornament italic">
+                Kliknite na sliko za njegovo polno zgodbo ✨
               </p>
             </div>
           </MysticalCard>
