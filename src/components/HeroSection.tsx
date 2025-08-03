@@ -1,7 +1,22 @@
+import { useState } from "react";
 import AncientTitle from "./AncientTitle";
 import OrnamentalDivider from "./OrnamentalDivider";
+import BookingDialog from "./BookingDialog";
+import { Button } from "./ui/button";
 
 const HeroSection = () => {
+  const [bookingDialogOpen, setBookingDialogOpen] = useState(false);
+  
+  // Define free consultation service
+  const freeConsultationService = {
+    id: "free-consultation",
+    name: "Brezplačen posvet",
+    description: "30-minutni uvodni pogovor za spoznavanje vaših potreb",
+    duration_minutes: 30,
+    price: 0,
+    type: "brezplacna_ocena"
+  };
+
   return (
     <section className="min-h-screen flex items-center justify-center relative pt-16 bg-cover bg-center bg-no-repeat" style={{backgroundImage: 'url(/lovable-uploads/c41033da-76b1-4518-b6bc-08e76dbd185a.png)'}}>{/* pt-16 for navigation space */}
       {/* Decorative corner ornaments */}
@@ -34,8 +49,23 @@ const HeroSection = () => {
               naravno ravnovesje telesa, čustev in duha"
             </p>
           </div>
+          
+          <div className="mt-8">
+            <Button 
+              onClick={() => setBookingDialogOpen(true)}
+              className="bg-primary hover:bg-primary/90 text-primary-foreground font-ancient text-lg px-8 py-3 rounded-lg shadow-lg transition-all duration-300 hover:shadow-xl"
+            >
+              Rezerviraj brezplačen posvet
+            </Button>
+          </div>
         </div>
       </div>
+
+      <BookingDialog 
+        open={bookingDialogOpen}
+        onOpenChange={setBookingDialogOpen}
+        selectedService={freeConsultationService}
+      />
     </section>
   );
 };
