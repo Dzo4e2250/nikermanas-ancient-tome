@@ -14,7 +14,188 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      bookings: {
+        Row: {
+          availability_id: string
+          booking_date: string
+          booking_time: string
+          client_email: string
+          client_name: string
+          client_phone: string | null
+          created_at: string
+          id: string
+          notes: string | null
+          sales_funnel_data: Json | null
+          service_id: string
+          status: string
+          therapist_name: string
+          updated_at: string
+        }
+        Insert: {
+          availability_id: string
+          booking_date: string
+          booking_time: string
+          client_email: string
+          client_name: string
+          client_phone?: string | null
+          created_at?: string
+          id?: string
+          notes?: string | null
+          sales_funnel_data?: Json | null
+          service_id: string
+          status?: string
+          therapist_name: string
+          updated_at?: string
+        }
+        Update: {
+          availability_id?: string
+          booking_date?: string
+          booking_time?: string
+          client_email?: string
+          client_name?: string
+          client_phone?: string | null
+          created_at?: string
+          id?: string
+          notes?: string | null
+          sales_funnel_data?: Json | null
+          service_id?: string
+          status?: string
+          therapist_name?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "bookings_availability_id_fkey"
+            columns: ["availability_id"]
+            isOneToOne: false
+            referencedRelation: "therapist_availability"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "bookings_service_id_fkey"
+            columns: ["service_id"]
+            isOneToOne: false
+            referencedRelation: "services"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      sales_funnel_questions: {
+        Row: {
+          created_at: string
+          id: string
+          is_required: boolean | null
+          options: Json | null
+          order_index: number
+          question_text: string
+          question_type: string
+          service_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          is_required?: boolean | null
+          options?: Json | null
+          order_index: number
+          question_text: string
+          question_type: string
+          service_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          is_required?: boolean | null
+          options?: Json | null
+          order_index?: number
+          question_text?: string
+          question_type?: string
+          service_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "sales_funnel_questions_service_id_fkey"
+            columns: ["service_id"]
+            isOneToOne: false
+            referencedRelation: "services"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      services: {
+        Row: {
+          created_at: string
+          description: string | null
+          duration_minutes: number
+          id: string
+          max_participants: number | null
+          name: string
+          price: number | null
+          type: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          description?: string | null
+          duration_minutes: number
+          id?: string
+          max_participants?: number | null
+          name: string
+          price?: number | null
+          type: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          description?: string | null
+          duration_minutes?: number
+          id?: string
+          max_participants?: number | null
+          name?: string
+          price?: number | null
+          type?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      therapist_availability: {
+        Row: {
+          created_at: string
+          date: string
+          end_time: string
+          id: string
+          is_available: boolean | null
+          max_bookings: number | null
+          service_type: string
+          start_time: string
+          therapist_name: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          date: string
+          end_time: string
+          id?: string
+          is_available?: boolean | null
+          max_bookings?: number | null
+          service_type: string
+          start_time: string
+          therapist_name: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          date?: string
+          end_time?: string
+          id?: string
+          is_available?: boolean | null
+          max_bookings?: number | null
+          service_type?: string
+          start_time?: string
+          therapist_name?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
