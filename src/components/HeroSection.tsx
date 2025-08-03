@@ -49,15 +49,6 @@ const HeroSection = () => {
               naravno ravnovesje telesa, čustev in duha"
             </p>
           </div>
-          
-          <div className="mt-8">
-            <Button 
-              onClick={() => setBookingDialogOpen(true)}
-              className="bg-primary hover:bg-primary/90 text-primary-foreground font-ancient text-lg px-8 py-3 rounded-lg shadow-lg transition-all duration-300 hover:shadow-xl"
-            >
-              Rezerviraj brezplačen posvet
-            </Button>
-          </div>
         </div>
       </div>
 

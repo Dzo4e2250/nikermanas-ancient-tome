@@ -1,10 +1,22 @@
 import { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
+import BookingDialog from "./BookingDialog";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
+  const [bookingDialogOpen, setBookingDialogOpen] = useState(false);
+
+  // Define free consultation service
+  const freeConsultationService = {
+    id: "free-consultation",
+    name: "Brezplačen posvet",
+    description: "30-minutni uvodni pogovor za spoznavanje vaših potreb",
+    duration_minutes: 30,
+    price: 0,
+    type: "brezplacna_ocena"
+  };
 
   useEffect(() => {
     let ticking = false;
@@ -87,12 +99,12 @@ const Navigation = () => {
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-ornament transition-all duration-300 group-hover:w-full"></span>
               </a>
             ))}
-            <a 
-              href="tel:051358273"
+            <button 
+              onClick={() => setBookingDialogOpen(true)}
               className="font-ancient bg-primary text-primary-foreground px-4 py-2 rounded hover:bg-secondary transition-colors duration-300 border border-ornament"
             >
               Rezerviraj
-            </a>
+            </button>
           </div>
 
           {/* Mobile menu button */}
@@ -121,15 +133,24 @@ const Navigation = () => {
                 {item.label}
               </a>
             ))}
-            <a 
-              href="tel:051358273"
+            <button 
+              onClick={() => {
+                setBookingDialogOpen(true);
+                setIsOpen(false);
+              }}
               className="inline-block font-ancient bg-primary text-primary-foreground px-4 py-2 rounded mt-2 border border-ornament"
             >
               Rezerviraj
-            </a>
+            </button>
           </div>
         )}
       </div>
+
+      <BookingDialog 
+        open={bookingDialogOpen}
+        onOpenChange={setBookingDialogOpen}
+        selectedService={freeConsultationService}
+      />
     </nav>
   );
 };

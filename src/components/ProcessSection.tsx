@@ -1,8 +1,21 @@
+import { useState } from "react";
 import AncientTitle from "./AncientTitle";
 import MysticalCard from "./MysticalCard";
 import OrnamentalDivider from "./OrnamentalDivider";
+import BookingDialog from "./BookingDialog";
 
 const ProcessSection = () => {
+  const [bookingDialogOpen, setBookingDialogOpen] = useState(false);
+
+  // Define free consultation service
+  const freeConsultationService = {
+    id: "free-consultation",
+    name: "Brezplačen posvet",
+    description: "30-minutni uvodni pogovor za spoznavanje vaših potreb",
+    duration_minutes: 30,
+    price: 0,
+    type: "brezplacna_ocena"
+  };
   const steps = [
     {
       number: "I",
@@ -66,15 +79,21 @@ const ProcessSection = () => {
         </div>
         
         <div className="text-center mt-12">
-          <a 
-            href="tel:051358273"
+          <button 
+            onClick={() => setBookingDialogOpen(true)}
             className="inline-flex items-center font-ancient bg-primary text-primary-foreground px-8 py-4 rounded shadow-mystical hover:bg-secondary transition-all duration-300 border-2 border-ornament"
           >
             <span className="mr-2">📞</span>
             Začni z Brezplačno Terapijo
-          </a>
+          </button>
         </div>
       </div>
+
+      <BookingDialog 
+        open={bookingDialogOpen}
+        onOpenChange={setBookingDialogOpen}
+        selectedService={freeConsultationService}
+      />
     </section>
   );
 };
