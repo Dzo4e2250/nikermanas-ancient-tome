@@ -14,14 +14,14 @@ const Index = () => {
       <div id="domov">
         <HeroSection />
       </div>
+      <div id="proces">
+        <ProcessSection />
+      </div>
       <div id="storitve">
         <ServicesSection />
       </div>
       <div id="o-nas">
         <AboutSection />
-      </div>
-      <div id="proces">
-        <ProcessSection />
       </div>
       <div id="pricevanja">
         <TestimonialsSection />
