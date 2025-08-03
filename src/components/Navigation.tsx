@@ -1,22 +1,12 @@
 import { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
-import BookingDialog from "./BookingDialog";
+import FreeConsultationDialog from "./FreeConsultationDialog";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [bookingDialogOpen, setBookingDialogOpen] = useState(false);
-
-  // Define free consultation service
-  const freeConsultationService = {
-    id: "free-consultation",
-    name: "Brezplačen posvet",
-    description: "30-minutni uvodni pogovor za spoznavanje vaših potreb",
-    duration_minutes: 30,
-    price: 0,
-    type: "brezplacna_ocena"
-  };
 
   useEffect(() => {
     let ticking = false;
@@ -146,10 +136,9 @@ const Navigation = () => {
         )}
       </div>
 
-      <BookingDialog 
+      <FreeConsultationDialog 
         open={bookingDialogOpen}
         onOpenChange={setBookingDialogOpen}
-        selectedService={freeConsultationService}
       />
     </nav>
   );

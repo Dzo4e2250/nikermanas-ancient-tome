@@ -2,20 +2,10 @@ import { useState } from "react";
 import AncientTitle from "./AncientTitle";
 import MysticalCard from "./MysticalCard";
 import OrnamentalDivider from "./OrnamentalDivider";
-import BookingDialog from "./BookingDialog";
+import FreeConsultationDialog from "./FreeConsultationDialog";
 
 const ProcessSection = () => {
   const [bookingDialogOpen, setBookingDialogOpen] = useState(false);
-
-  // Define free consultation service
-  const freeConsultationService = {
-    id: "free-consultation",
-    name: "Brezplačen posvet",
-    description: "30-minutni uvodni pogovor za spoznavanje vaših potreb",
-    duration_minutes: 30,
-    price: 0,
-    type: "brezplacna_ocena"
-  };
   const steps = [
     {
       number: "I",
@@ -89,10 +79,9 @@ const ProcessSection = () => {
         </div>
       </div>
 
-      <BookingDialog 
+      <FreeConsultationDialog 
         open={bookingDialogOpen}
         onOpenChange={setBookingDialogOpen}
-        selectedService={freeConsultationService}
       />
     </section>
   );
