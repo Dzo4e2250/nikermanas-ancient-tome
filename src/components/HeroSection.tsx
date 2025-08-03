@@ -4,8 +4,6 @@ import OrnamentalDivider from "./OrnamentalDivider";
 const HeroSection = () => {
   return (
     <section className="min-h-screen flex items-center justify-center relative pt-16 bg-cover bg-center bg-no-repeat" style={{backgroundImage: 'url(/lovable-uploads/c41033da-76b1-4518-b6bc-08e76dbd185a.png)'}}>{/* pt-16 for navigation space */}
-      {/* Dark overlay for better text readability */}
-      <div className="absolute inset-0 bg-black/40"></div>
       {/* Decorative corner ornaments */}
       <div className="absolute top-8 left-8 text-4xl text-ornament opacity-60">❦</div>
       <div className="absolute top-8 right-8 text-4xl text-ornament opacity-60 transform scale-x-[-1]">❦</div>
