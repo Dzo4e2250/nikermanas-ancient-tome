@@ -29,7 +29,7 @@ const Index = () => {
       <CallToActionSection />
       
       {/* Ancient footer */}
-      <footer className="bg-primary text-primary-foreground py-8">
+      <footer className="bg-primary text-primary-foreground py-8 relative">
         <div className="max-w-4xl mx-auto px-6 text-center">
           <div className="text-2xl mb-4 text-mystical-glow">❦</div>
           <p className="font-gothic text-lg mb-2">NIKRMANA</p>
@@ -40,6 +40,14 @@ const Index = () => {
             "Povratek k sebi in ljubezni"
           </p>
         </div>
+        
+        {/* Admin access link */}
+        <a 
+          href="/auth"
+          className="absolute bottom-4 right-4 font-ancient text-xs opacity-40 hover:opacity-70 transition-opacity duration-300 underline"
+        >
+          admin dostop
+        </a>
       </footer>
     </main>
   );
