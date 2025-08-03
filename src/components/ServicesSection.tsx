@@ -42,6 +42,22 @@ const ServicesSection = () => {
     setBookingDialogOpen(true);
   };
 
+  // Funkcija za pridobitev simbolične slike glede na tip storitve
+  const getServiceImage = (serviceType: string, serviceName: string) => {
+    switch (serviceType) {
+      case 'individual':
+        return serviceName.includes('Paraterapija') 
+          ? 'photo-1472396961693-142e6e269027' // Deer in nature - za travmo/ozdravljanje
+          : 'photo-1721322800607-8c38375eef04'; // Living room - za individualno terapijo
+      case 'group':
+        return 'photo-1517022812141-23620dba5c23'; // Herd of sheep - za skupinsko terapijo
+      case 'assessment':
+        return 'photo-1581090464777-f3220bbe1b8b'; // Light bulb - za analizo/vpogled
+      default:
+        return 'photo-1472396961693-142e6e269027';
+    }
+  };
+
   return (
     <section className="py-16 bg-parchment">
       <div className="max-w-6xl mx-auto px-6">
@@ -53,13 +69,24 @@ const ServicesSection = () => {
         
         <div className="grid md:grid-cols-2 gap-8 mt-12">
           {services.map((service) => (
-            <MysticalCard key={service.id} className="h-full">
+            <MysticalCard key={service.id} className="h-full flex flex-col">
+              {/* Simbolična slika */}
+              <div className="mb-4 overflow-hidden rounded-lg">
+                <img 
+                  src={`https://images.unsplash.com/${getServiceImage(service.type, service.name)}?auto=format&fit=crop&w=600&h=200&q=80`}
+                  alt={service.name}
+                  className="w-full h-48 object-cover"
+                />
+              </div>
+              
               <AncientTitle level={3} className="mb-4 text-left">
                 {service.name}
               </AncientTitle>
+              
               <p className="font-ancient text-muted-foreground leading-relaxed mb-6">
                 {service.description}
               </p>
+              
               <div className="mt-auto">
                 <Button 
                   onClick={() => handleServiceClick(service)}
