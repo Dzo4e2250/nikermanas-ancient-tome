@@ -57,20 +57,10 @@ const ServicesSection = () => {
               <AncientTitle level={3} className="mb-4 text-left">
                 {service.name}
               </AncientTitle>
-              <p className="font-ancient text-muted-foreground leading-relaxed mb-4">
+              <p className="font-ancient text-muted-foreground leading-relaxed mb-6">
                 {service.description}
               </p>
-              <div className="space-y-3 mt-4">
-                <div className="bg-accent/20 p-3 rounded-lg border border-ornament/30">
-                  {service.duration_minutes > 0 && (
-                    <p className="text-sm font-gothic text-accent-foreground">
-                      <span className="font-medium">Trajanje:</span> {service.duration_minutes} min
-                    </p>
-                  )}
-                  <p className="text-sm font-gothic text-accent-foreground">
-                    <span className="font-medium">Cena:</span> {service.price > 0 ? `${service.price}€` : 'BREZPLAČNO'}
-                  </p>
-                </div>
+              <div className="mt-auto">
                 <Button 
                   onClick={() => handleServiceClick(service)}
                   className="w-full"
