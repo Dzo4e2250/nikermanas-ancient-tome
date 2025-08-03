@@ -5,7 +5,7 @@ import AboutSection from "@/components/AboutSection";
 import ProcessSection from "@/components/ProcessSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import CallToActionSection from "@/components/CallToActionSection";
-import ContactSection from "@/components/ContactSection";
+
 
 const Index = () => {
   return (
@@ -27,9 +27,6 @@ const Index = () => {
         <TestimonialsSection />
       </div>
       <CallToActionSection />
-      <div id="kontakt">
-        <ContactSection />
-      </div>
       
       {/* Ancient footer */}
       <footer className="bg-primary text-primary-foreground py-8">
