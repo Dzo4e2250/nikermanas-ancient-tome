@@ -54,30 +54,51 @@ const TestimonialsSection = () => {
         
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
           {testimonials.map((testimonial, index) => (
-            <MysticalCard key={index} className="h-full flex flex-col">
-              {/* Avatar, ime in kraj na vrhu */}
-              <div className="text-center mb-6">
-                <Avatar className="w-16 h-16 border-2 border-ornament/30 mx-auto mb-3">
-                  <AvatarImage src={testimonial.avatar} alt={testimonial.author} />
-                  <AvatarFallback className="bg-ornament/10 text-ornament font-gothic">
-                    {testimonial.author.split(' ').map(n => n[0]).join('')}
-                  </AvatarFallback>
-                </Avatar>
-                <p className="font-ancient text-sm text-ornament font-semibold">
-                  {testimonial.author}
-                </p>
-                <p className="font-ancient text-xs text-muted-foreground">
-                  {testimonial.location}
-                </p>
-              </div>
-              
-              <div className="flex-1">
-                <div className="text-3xl text-ornament mb-4 text-center">❝</div>
-                <p className="font-ancient text-muted-foreground leading-relaxed italic">
-                  {testimonial.text}
-                </p>
-              </div>
-            </MysticalCard>
+            <div 
+              key={index} 
+              className="group animate-fade-in hover-scale"
+              style={{ animationDelay: `${index * 0.1}s` }}
+            >
+              <MysticalCard className="h-full flex flex-col relative overflow-hidden">
+                {/* Dekorativni gradient overlay */}
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+                
+                {/* Avatar, ime in kraj na vrhu */}
+                <div className="text-center mb-6 relative z-10">
+                  <div className="relative inline-block">
+                    <Avatar className="w-20 h-20 border-3 border-ornament/30 mx-auto mb-4 shadow-lg group-hover:shadow-xl transition-shadow duration-300">
+                      <AvatarImage src={testimonial.avatar} alt={testimonial.author} className="object-cover" />
+                      <AvatarFallback className="bg-gradient-to-br from-ornament/20 to-ornament/10 text-ornament font-gothic text-lg">
+                        {testimonial.author.split(' ').map(n => n[0]).join('')}
+                      </AvatarFallback>
+                    </Avatar>
+                    {/* Svetlikajoči obroč za hover */}
+                    <div className="absolute inset-0 rounded-full border-2 border-primary/30 opacity-0 group-hover:opacity-100 scale-110 transition-all duration-300" />
+                  </div>
+                  
+                  <h4 className="font-gothic text-lg text-ornament font-semibold mb-1 group-hover:text-primary transition-colors duration-300">
+                    {testimonial.author}
+                  </h4>
+                  <p className="font-ancient text-sm text-muted-foreground flex items-center justify-center gap-1">
+                    <span className="w-1 h-1 bg-ornament/50 rounded-full"></span>
+                    {testimonial.location}
+                    <span className="w-1 h-1 bg-ornament/50 rounded-full"></span>
+                  </p>
+                </div>
+                
+                {/* Citat z boljšo tipografijo */}
+                <div className="flex-1 relative z-10">
+                  <div className="text-4xl text-ornament/30 mb-3 text-center leading-none">"</div>
+                  <blockquote className="font-ancient text-muted-foreground leading-relaxed italic text-center relative">
+                    <span className="relative z-10">{testimonial.text}</span>
+                  </blockquote>
+                  <div className="text-4xl text-ornament/30 mt-3 text-center leading-none rotate-180">"</div>
+                </div>
+                
+                {/* Dekorativna črta na dnu */}
+                <div className="w-12 h-px bg-gradient-to-r from-transparent via-ornament/50 to-transparent mx-auto mt-4 group-hover:w-20 transition-all duration-500" />
+              </MysticalCard>
+            </div>
           ))}
         </div>
         
