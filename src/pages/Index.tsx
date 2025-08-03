@@ -1,17 +1,35 @@
+import Navigation from "@/components/Navigation";
 import HeroSection from "@/components/HeroSection";
 import ServicesSection from "@/components/ServicesSection";
 import AboutSection from "@/components/AboutSection";
+import ProcessSection from "@/components/ProcessSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
+import CallToActionSection from "@/components/CallToActionSection";
 import ContactSection from "@/components/ContactSection";
 
 const Index = () => {
   return (
     <main className="min-h-screen bg-background font-ancient">
-      <HeroSection />
-      <ServicesSection />
-      <AboutSection />
-      <TestimonialsSection />
-      <ContactSection />
+      <Navigation />
+      <div id="domov">
+        <HeroSection />
+      </div>
+      <div id="storitve">
+        <ServicesSection />
+      </div>
+      <div id="o-nas">
+        <AboutSection />
+      </div>
+      <div id="proces">
+        <ProcessSection />
+      </div>
+      <div id="pricevanja">
+        <TestimonialsSection />
+      </div>
+      <CallToActionSection />
+      <div id="kontakt">
+        <ContactSection />
+      </div>
       
       {/* Ancient footer */}
       <footer className="bg-primary text-primary-foreground py-8">

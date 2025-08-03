@@ -3,7 +3,7 @@ import OrnamentalDivider from "./OrnamentalDivider";
 
 const HeroSection = () => {
   return (
-    <section className="min-h-screen flex items-center justify-center bg-gradient-mystical relative">
+    <section className="min-h-screen flex items-center justify-center bg-gradient-mystical relative pt-16">{/* pt-16 for navigation space */}
       {/* Decorative corner ornaments */}
       <div className="absolute top-8 left-8 text-4xl text-ornament opacity-60">❦</div>
       <div className="absolute top-8 right-8 text-4xl text-ornament opacity-60 transform scale-x-[-1]">❦</div>
