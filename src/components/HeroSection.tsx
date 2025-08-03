@@ -16,7 +16,7 @@ const HeroSection = () => {
           <img 
             src="/lovable-uploads/f1bc1069-4c8c-46a7-85d8-285882dbb31d.png" 
             alt="NIKRMANA logo" 
-            className="w-auto h-32 md:h-48 mx-auto mb-6"
+            className="w-auto h-48 md:h-64 mx-auto mb-6"
           />
           
           <OrnamentalDivider />
