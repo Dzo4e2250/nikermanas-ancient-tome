@@ -72,7 +72,7 @@ const Navigation = () => {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="font-gothic text-2xl text-ancient-text">
-            <span className="text-ornament">❦</span> NIKERMANA
+            <span className="text-ornament">❦</span> NIKRMANA
           </div>
 
           {/* Desktop Navigation */}
