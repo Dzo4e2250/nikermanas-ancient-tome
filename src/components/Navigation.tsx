@@ -57,7 +57,7 @@ const Navigation = () => {
   const navItems = [
     { href: "#domov", label: "Domov" },
     { href: "#storitve", label: "Energoterapije" },
-    { href: "#o-nas", label: "O Tanji & Edu" },
+    { href: "#o-nas", label: "O Tanji, Edu & Santiagu" },
     { href: "#pricevanja", label: "Zgodbe preobrazbe" },
     { href: "#proces", label: "Kako začeti" },
     { href: "#kontakt", label: "Kontakt" },

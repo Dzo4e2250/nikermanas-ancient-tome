@@ -13,8 +13,8 @@ const ProcessSection = () => {
     {
       number: "II", 
       title: "Osebni Načrt",
-      description: "Skupaj ustvariva individualen pristop glede na vaše potrebe - individualne ali skupinske terapije.",
-      action: "Pogovor s Tanjo & Edom"
+      description: "Skupaj ustvarimo individualen pristop glede na vaše potrebe - individualne ali skupinske terapije.",
+      action: "Pogovor s Tanjo, Edom & Santiagom"
     },
     {
       number: "III",
@@ -25,7 +25,7 @@ const ProcessSection = () => {
     {
       number: "IV",
       title: "Preobrazba",
-      description: "Utelešanje najvišjega potenciala skozi sinergijo ženskega in moškega principa.",
+      description: "Utelešanje najvišjega potenciala skozi sinergijo ženskega, moškega principa in živalske modrosti.",
       action: "Živi svojo resnico"
     }
   ];

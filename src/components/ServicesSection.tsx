@@ -11,8 +11,8 @@ const ServicesSection = () => {
     },
     {
       title: "Skupinska Energoterapija",
-      description: "Sinergija ženskega in moškega principa. Tanja - intuitivna kot voda, Edo - stabilen kot zemlja. Skupaj ustvarjava varen prostor ljubezni.",
-      note: "Dotik Nikrmane"
+      description: "Sinergija ženskega, moškega principa in živalske modrosti. Tanja - intuitivna kot voda, Edo - stabilen kot zemlja, Santiago - srčni varuh. Skupaj ustvarjamo varen prostor ljubezni.",
+      note: "Dotik Nikrmane s Santiagom"
     },
     {
       title: "Transformativne Meditacije",
