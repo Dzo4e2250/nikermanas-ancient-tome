@@ -1,6 +1,8 @@
 import AncientTitle from "./AncientTitle";
 import MysticalCard from "./MysticalCard";
 import OrnamentalDivider from "./OrnamentalDivider";
+import tanjaAvatar from "@/assets/tanja-avatar.jpg";
+import edoAvatar from "@/assets/edo-avatar.jpg";
 
 const AboutSection = () => {
   return (
@@ -18,7 +20,11 @@ const AboutSection = () => {
               <AncientTitle level={3} className="mb-4">
                 Tanja
               </AncientTitle>
-              <div className="text-6xl mb-4 text-ornament">🌙</div>
+              <img 
+                src={tanjaAvatar} 
+                alt="Tanja - Ženski princip" 
+                className="w-32 h-32 mx-auto rounded-full mb-4 shadow-mystical object-cover border-2 border-ornament"
+              />
               <p className="font-ancient text-muted-foreground leading-relaxed">
                 <strong>Ženski princip</strong> - intuitivna, mehka in fluidna kot voda. 
                 Nosi energijo nežnosti in globokega razumevanja. 
@@ -32,7 +38,11 @@ const AboutSection = () => {
               <AncientTitle level={3} className="mb-4">
                 Edo
               </AncientTitle>
-              <div className="text-6xl mb-4 text-ornament">☉</div>
+              <img 
+                src={edoAvatar} 
+                alt="Edo - Moški princip" 
+                className="w-32 h-32 mx-auto rounded-full mb-4 shadow-mystical object-cover border-2 border-ornament"
+              />
               <p className="font-ancient text-muted-foreground leading-relaxed">
                 <strong>Moški princip</strong> - predstavlja stabilnost, moč in prizemljenost. 
                 Temelj, ki omogoča varno raziskovanje notranjih svetov in preobrazbo.
