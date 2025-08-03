@@ -27,8 +27,7 @@ const ServicesSection = () => {
     try {
       const { data, error } = await (supabase as any)
         .from('services')
-        .select('*')
-        .eq('is_active', true);
+        .select('*');
       
       if (error) throw error;
       setServices(data || []);
