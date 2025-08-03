@@ -44,6 +44,12 @@ const ServicesSection = () => {
     }
   };
 
+  // Osvežimo podatke vsakih 5 sekund
+  useEffect(() => {
+    const interval = setInterval(fetchServices, 5000);
+    return () => clearInterval(interval);
+  }, []);
+
   const handleServiceClick = (service: Service) => {
     setSelectedService(service);
     setBookingDialogOpen(true);
