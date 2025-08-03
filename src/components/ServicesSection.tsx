@@ -7,7 +7,7 @@ import OrnamentalDivider from "./OrnamentalDivider";
 import BookingDialog from "./BookingDialog";
 
 // Import generirane karikaturne slike
-import individualnaCartoon from "@/assets/individualna-terapija-cartoon.jpg";
+import individualnaCartoon from "@/assets/individualna-terapija-cartoon.png";
 import paraterapijaCartoon from "@/assets/paraterapija-cartoon.jpg";
 import skupinskaCartoon from "@/assets/skupinska-terapija-cartoon.jpg";
 import brezplacnaCartoon from "@/assets/brezplacna-ocena-cartoon.jpg";
