@@ -7,7 +7,7 @@ import { removeBackground, loadImageFromSrc } from "@/lib/backgroundRemoval";
 import { toast } from "sonner";
 
 interface EnhancedBiographyDialogProps {
-  person: "tanja" | "edo";
+  person: "tanja" | "edo" | "santiago";
   avatar: string;
   name: string;
   children: React.ReactNode;
@@ -61,7 +61,7 @@ const EnhancedBiographyDialog = ({ person, avatar, name, children }: EnhancedBio
         ],
         philosophy: "\"Terapije ne zdravijo na silo, temveč odstranjujejo ovire, da človek sam aktivira svoj potencial. Vsaka ženska nosi v sebi tisoč obrazov - pomembno je, da jih spozna in sprejme vse.\""
       };
-    } else {
+    } else if (person === "edo") {
       return {
         title: "Edo - Moški Princip", 
         subtitle: "Stabilni temelj notranje preobrazbe",
@@ -79,6 +79,25 @@ const EnhancedBiographyDialog = ({ person, avatar, name, children }: EnhancedBio
           "Vodenje skupinskih energijskih terapij"
         ],
         philosophy: "\"Prava moč se rojeva iz umirjenosti. Moja naloga je ustvariti prostor, kjer se ljudje počutijo dovolj varno, da se lahko srečajo s svojo najglobjo resnico.\""
+      };
+    } else {
+      return {
+        title: "Santiago - Srčni Varuh",
+        subtitle: "Terapevt po naravi",
+        story: [
+          "Santiago ni samo pes. Je črno-bel francoski buldog s pogledom, ki gre globlje od oči. Ko te zagleda, skoči... zaropoče z energijo veselja, srce mu prekipeva.",
+          "Ne zna se pretvarjati. Ne zna se zadržati. Vse, kar čuti – je tam. Takoj. Zate. Na individualnih terapijah s Tanjo je vedno prisoten, ne zato ker bi ga tja postavili, ampak ker preprosto noče biti sam doma.",
+          "Sprva je bilo to 'naključno'. A kmalu je postalo jasno – to ni naključje. To je njegov klic. Nežni varuh prostora. Ko ni potrebe – spi. Ko je žalost – jo diha s tabo.",
+          "Ko nekdo zdrsne globoko vase – se nežno premakne bližje. Kot bi vedel. In ve. Ni treniran. Ni naučen. A ve, kdaj božati, kdaj samo biti. Santiago je terapevt po naravi."
+        ],
+        specialties: [
+          "Prisotnost na individualnih terapijah",
+          "Nežno varovanje terapevtskega prostora",
+          "Intuitivno čustveno podporo",
+          "Naravno zdravilno energijo",
+          "Varuh portala voda"
+        ],
+        philosophy: "\"Če si ranjen – bo tam. Če si zaprt – bo čakal. Ne sili, a odpira. Ne uči, a zdravi. Santiago je srčni varuh Nikrmane, Nikrmana z repkom.\""
       };
     }
   };

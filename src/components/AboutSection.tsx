@@ -4,18 +4,19 @@ import OrnamentalDivider from "./OrnamentalDivider";
 import EnhancedBiographyDialog from "./EnhancedBiographyDialog";
 import tanjaAvatar from "@/assets/tanja-avatar.jpg";
 import edoAvatar from "@/assets/edo-avatar.jpg";
+import santiagoAvatar from "@/assets/santiago-avatar.jpg";
 
 const AboutSection = () => {
   return (
     <section className="py-16 bg-gradient-ancient">
       <div className="max-w-4xl mx-auto px-6">
         <AncientTitle level={2} className="mb-12">
-          Voditelja Preobrazbe
+          Voditelji Preobrazbe
         </AncientTitle>
         
         <OrnamentalDivider />
         
-        <div className="grid md:grid-cols-2 gap-8 mt-12">
+        <div className="grid md:grid-cols-3 gap-8 mt-12">
           <MysticalCard>
             <div className="text-center">
               <AncientTitle level={3} className="mb-4">
@@ -60,13 +61,35 @@ const AboutSection = () => {
               </p>
             </div>
           </MysticalCard>
+          
+          <MysticalCard>
+            <div className="text-center">
+              <AncientTitle level={3} className="mb-4">
+                Santiago
+              </AncientTitle>
+              <EnhancedBiographyDialog person="santiago" avatar={santiagoAvatar} name="Santiago">
+                <img 
+                  src={santiagoAvatar} 
+                  alt="Santiago - Srčni varuh" 
+                  className="w-32 h-32 mx-auto rounded-full mb-4 shadow-mystical object-cover border-2 border-ornament cursor-pointer hover:scale-105 transition-transform duration-300"
+                />
+              </EnhancedBiographyDialog>
+              <p className="font-ancient text-muted-foreground leading-relaxed mb-2">
+                <strong>Srčni varuh</strong> - črno-bel francoski buldog s pogledom, ki gre globlje od oči. 
+                Terapevt po naravi, ki ve kdaj božati in kdaj samo biti.
+              </p>
+              <p className="font-ancient text-xs text-ornament italic">
+                Kliknite na sliko za njegovo polno zgodbo ✨
+              </p>
+            </div>
+          </MysticalCard>
         </div>
         
         <div className="text-center mt-12">
           <MysticalCard className="max-w-2xl mx-auto">
             <p className="font-ancient text-lg text-ancient-text leading-relaxed">
-              <em>"Skupaj ustvarjava varen prostor, kjer udeleženci čutijo ljubezen, 
-              umirjenost in dvig zavesti. Sinergija najinih energij omogoča 
+              <em>"Skupaj s Santiagom ustvarjamo varen prostor, kjer udeleženci čutijo ljubezen, 
+              umirjenost in dvig zavesti. Sinergija človeških in živalskih energij omogoča 
               globoko preobrazbo iz 3D v 5D zavest."</em>
             </p>
           </MysticalCard>
