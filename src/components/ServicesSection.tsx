@@ -96,7 +96,7 @@ const ServicesSection = () => {
                 <img 
                   src={getServiceImage(service)}
                   alt={service.name}
-                  className="w-full h-48 object-contain"
+                  className="w-full h-48 object-cover"
                 />
               </div>
               
