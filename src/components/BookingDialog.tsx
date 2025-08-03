@@ -162,6 +162,40 @@ const BookingDialog = ({ open, onOpenChange, selectedService }: BookingDialogPro
       return;
     }
 
+    // Za brezplačno oceno pošlji samo poročilo
+    if (selectedService.type === 'assessment') {
+      try {
+        const response = await fetch(`${import.meta.env.VITE_SUPABASE_URL}/functions/v1/send-assessment-report`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name: contactInfo.name,
+            email: contactInfo.email,
+            answers: answers
+          })
+        });
+
+        if (!response.ok) throw new Error('Napaka pri pošiljanju poročila');
+
+        toast({
+          title: "Poročilo poslano!",
+          description: "Vaše osebno poročilo je bilo poslano na vaš email naslov."
+        });
+
+        onOpenChange(false);
+        resetForm();
+        return;
+      } catch (error) {
+        console.error('Error sending assessment report:', error);
+        toast({
+          title: "Napaka",
+          description: "Napaka pri pošiljanju poročila. Poskusite znova.",
+          variant: "destructive"
+        });
+        return;
+      }
+    }
+
     // Za skupinske dogodke preveri izbrani dogodek
     if (selectedService.type === 'group' && !selectedEvent) {
       toast({
@@ -468,7 +502,9 @@ const BookingDialog = ({ open, onOpenChange, selectedService }: BookingDialogPro
       return questions.length === 0 || questions.every(q => answers[q.id]);
     }
     if (step === 2) {
-      if (selectedService?.type === 'group') {
+      if (selectedService?.type === 'assessment') {
+        return true; // Za brezplačno storitev preskoci step 2
+      } else if (selectedService?.type === 'group') {
         return !!selectedEvent;
       } else {
         return selectedDate && selectedTime;
@@ -514,7 +550,8 @@ const BookingDialog = ({ open, onOpenChange, selectedService }: BookingDialogPro
           {step === 1 && renderQuestionnaire()}
           {step === 2 && selectedService?.type === 'group' && renderUpcomingEvents()}
           {step === 2 && selectedService?.type === 'individual' && renderCalendar()}
-          {step === 3 && renderContactForm()}
+          {step === 2 && selectedService?.type === 'assessment' && renderContactForm()}
+          {step === 3 && selectedService?.type !== 'assessment' && renderContactForm()}
 
           {/* Navigation buttons */}
           <div className="flex justify-between pt-6">
@@ -528,7 +565,9 @@ const BookingDialog = ({ open, onOpenChange, selectedService }: BookingDialogPro
 
             <Button
               onClick={() => {
-                if (step < 3) {
+                if (selectedService?.type === 'assessment' && step === 1) {
+                  setStep(2); // Za brezplačno storitev preskoči na kontaktni obrazec
+                } else if (step < 3 && selectedService?.type !== 'assessment') {
                   setStep(step + 1);
                 } else {
                   handleSubmitBooking();
@@ -536,8 +575,13 @@ const BookingDialog = ({ open, onOpenChange, selectedService }: BookingDialogPro
               }}
               disabled={!canProceed()}
             >
-              {step === 3 ? "Pošlji rezervacijo" : "Naprej"}
-              {step < 3 && <ArrowRight className="w-4 h-4 ml-2" />}
+              {(step === 3 && selectedService?.type !== 'assessment') || 
+               (step === 2 && selectedService?.type === 'assessment') 
+                ? (selectedService?.type === 'assessment' ? "Pošlji poročilo" : "Pošlji rezervacijo") 
+                : "Naprej"}
+              {((step < 3 && selectedService?.type !== 'assessment') || 
+                (step < 2 && selectedService?.type === 'assessment')) && 
+                <ArrowRight className="w-4 h-4 ml-2" />}
             </Button>
           </div>
         </div>
