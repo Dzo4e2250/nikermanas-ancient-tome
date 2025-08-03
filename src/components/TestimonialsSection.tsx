@@ -55,29 +55,30 @@ const TestimonialsSection = () => {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
           {testimonials.map((testimonial, index) => (
             <MysticalCard key={index} className="h-full flex flex-col">
+              {/* Avatar na vrhu */}
+              <div className="flex justify-center mb-4">
+                <Avatar className="w-16 h-16 border-2 border-ornament/30">
+                  <AvatarImage src={testimonial.avatar} alt={testimonial.author} />
+                  <AvatarFallback className="bg-ornament/10 text-ornament font-gothic">
+                    {testimonial.author.split(' ').map(n => n[0]).join('')}
+                  </AvatarFallback>
+                </Avatar>
+              </div>
+              
               <div className="flex-1">
                 <div className="text-3xl text-ornament mb-4 text-center">❝</div>
                 <p className="font-ancient text-muted-foreground leading-relaxed mb-6 italic">
                   {testimonial.text}
                 </p>
               </div>
+              
               <div className="text-center border-t border-ornament/30 pt-4 mt-auto">
-                <div className="flex flex-col items-center space-y-3">
-                  <Avatar className="w-12 h-12 border-2 border-ornament/30">
-                    <AvatarImage src={testimonial.avatar} alt={testimonial.author} />
-                    <AvatarFallback className="bg-ornament/10 text-ornament font-gothic">
-                      {testimonial.author.split(' ').map(n => n[0]).join('')}
-                    </AvatarFallback>
-                  </Avatar>
-                  <div>
-                    <p className="font-ancient text-sm text-ornament font-semibold">
-                      {testimonial.author}
-                    </p>
-                    <p className="font-ancient text-xs text-muted-foreground mt-1">
-                      {testimonial.location}
-                    </p>
-                  </div>
-                </div>
+                <p className="font-ancient text-sm text-ornament font-semibold">
+                  {testimonial.author}
+                </p>
+                <p className="font-ancient text-xs text-muted-foreground mt-1">
+                  {testimonial.location}
+                </p>
               </div>
             </MysticalCard>
           ))}
