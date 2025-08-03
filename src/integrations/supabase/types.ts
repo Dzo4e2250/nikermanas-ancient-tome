@@ -127,6 +127,7 @@ export type Database = {
           description: string | null
           duration_minutes: number
           id: string
+          image_url: string | null
           max_participants: number | null
           name: string
           price: number | null
@@ -138,6 +139,7 @@ export type Database = {
           description?: string | null
           duration_minutes: number
           id?: string
+          image_url?: string | null
           max_participants?: number | null
           name: string
           price?: number | null
@@ -149,6 +151,7 @@ export type Database = {
           description?: string | null
           duration_minutes?: number
           id?: string
+          image_url?: string | null
           max_participants?: number | null
           name?: string
           price?: number | null

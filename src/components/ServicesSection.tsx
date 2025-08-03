@@ -19,6 +19,7 @@ interface Service {
   duration_minutes: number;
   price: number;
   type: string;
+  image_url?: string;
 }
 
 const ServicesSection = () => {
@@ -48,14 +49,19 @@ const ServicesSection = () => {
     setBookingDialogOpen(true);
   };
 
-  // Funkcija za pridobitev generirane karikaturne slike glede na tip storitve
-  const getServiceImage = (serviceType: string, serviceName: string) => {
-    console.log('Service type:', serviceType, 'Service name:', serviceName);
-    console.log('Individual cartoon path:', individualnaCartoon);
+  // Funkcija za pridobitev slike storitve
+  const getServiceImage = (service: Service) => {
+    console.log('Service:', service);
     
-    switch (serviceType) {
+    // Če ima storitev naloženo sliko, uporabi to
+    if (service.image_url) {
+      return service.image_url;
+    }
+    
+    // Sicer uporabi generirane karikaturne slike
+    switch (service.type) {
       case 'individual':
-        return serviceName.includes('Paraterapija') 
+        return service.name.includes('Paraterapija') 
           ? paraterapijaCartoon
           : individualnaCartoon;
       case 'group':
@@ -82,7 +88,7 @@ const ServicesSection = () => {
               {/* Generirana karikaturna slika */}
               <div className="mb-4 overflow-hidden rounded-lg">
                 <img 
-                  src={getServiceImage(service.type, service.name)}
+                  src={getServiceImage(service)}
                   alt={service.name}
                   className="w-full h-48 object-cover"
                 />
