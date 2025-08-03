@@ -6,6 +6,12 @@ import MysticalCard from "./MysticalCard";
 import OrnamentalDivider from "./OrnamentalDivider";
 import BookingDialog from "./BookingDialog";
 
+// Import generirane karikaturne slike
+import individualnaCartoon from "@/assets/individualna-terapija-cartoon.jpg";
+import paraterapijaCartoon from "@/assets/paraterapija-cartoon.jpg";
+import skupinskaCartoon from "@/assets/skupinska-terapija-cartoon.jpg";
+import brezplacnaCartoon from "@/assets/brezplacna-ocena-cartoon.jpg";
+
 interface Service {
   id: string;
   name: string;
@@ -42,21 +48,19 @@ const ServicesSection = () => {
     setBookingDialogOpen(true);
   };
 
-  // Funkcija za pridobitev skičnih placeholder slik glede na tip storitve
-  const getServicePlaceholder = (serviceType: string, serviceName: string) => {
-    const baseUrl = 'https://via.placeholder.com/600x200/f5f5dc/8b4513?text=';
-    
+  // Funkcija za pridobitev generirane karikaturne slike glede na tip storitve
+  const getServiceImage = (serviceType: string, serviceName: string) => {
     switch (serviceType) {
       case 'individual':
         return serviceName.includes('Paraterapija') 
-          ? `${baseUrl}🌿+Paraterapija+Skica` // Narava/ozdravljanje
-          : `${baseUrl}👤+Individualna+Skica`; // Oseba
+          ? paraterapijaCartoon
+          : individualnaCartoon;
       case 'group':
-        return `${baseUrl}👥+Skupinska+Skica`; // Skupina ljudi
+        return skupinskaCartoon;
       case 'assessment':
-        return `${baseUrl}📊+Analiza+Skica`; // Analiza/vprašalnik
+        return brezplacnaCartoon;
       default:
-        return `${baseUrl}❓+Storitev+Skica`;
+        return individualnaCartoon;
     }
   };
 
@@ -72,37 +76,13 @@ const ServicesSection = () => {
         <div className="grid md:grid-cols-2 gap-8 mt-12">
           {services.map((service) => (
             <MysticalCard key={service.id} className="h-full flex flex-col">
-              {/* Placeholder skica - pozneje zamenjaj s pravo sliko */}
-              <div className="mb-4 overflow-hidden rounded-lg bg-gradient-to-br from-parchment to-accent/10 border-2 border-dashed border-ornament/30">
-                <div className="w-full h-48 flex items-center justify-center relative">
-                  {/* Skica ozadje */}
-                  <div className="absolute inset-0 opacity-5">
-                    <svg viewBox="0 0 100 100" className="w-full h-full">
-                      <defs>
-                        <pattern id="sketch-pattern" patternUnits="userSpaceOnUse" width="10" height="10">
-                          <path d="M0,5 Q5,0 10,5 Q5,10 0,5" stroke="#8b4513" strokeWidth="0.5" fill="none" opacity="0.3"/>
-                        </pattern>
-                      </defs>
-                      <rect width="100" height="100" fill="url(#sketch-pattern)"/>
-                    </svg>
-                  </div>
-                  
-                  {/* Ikone glede na tip storitve */}
-                  <div className="text-6xl text-ornament/40 z-10">
-                    {service.type === 'individual' && service.name.includes('Paraterapija') && '🌿'}
-                    {service.type === 'individual' && !service.name.includes('Paraterapija') && '👤'}
-                    {service.type === 'group' && '👥'}
-                    {service.type === 'assessment' && '📊'}
-                  </div>
-                  
-                  {/* Skica okvir */}
-                  <div className="absolute inset-2 border border-ornament/20 rounded-lg"></div>
-                  
-                  {/* "Skica" oznaka */}
-                  <div className="absolute top-2 right-2 bg-ornament/10 px-2 py-1 rounded text-xs font-gothic text-ornament/60">
-                    SKICA
-                  </div>
-                </div>
+              {/* Generirana karikaturna slika */}
+              <div className="mb-4 overflow-hidden rounded-lg">
+                <img 
+                  src={getServiceImage(service.type, service.name)}
+                  alt={service.name}
+                  className="w-full h-48 object-cover"
+                />
               </div>
               
               <AncientTitle level={3} className="mb-4 text-left">
