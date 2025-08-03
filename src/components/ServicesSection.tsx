@@ -8,7 +8,7 @@ import BookingDialog from "./BookingDialog";
 
 // Import generirane karikaturne slike
 import individualnaCartoon from "@/assets/individualna-terapija-cartoon.png";
-import paraterapijaCartoon from "@/assets/paraterapija-cartoon.jpg";
+import paraterapijaCartoon from "/lovable-uploads/a17a69f7-5e9f-43e2-93cf-dc640f3d8db6.png";
 import skupinskaCartoon from "@/assets/skupinska-terapija-cartoon.jpg";
 import brezplacnaCartoon from "@/assets/brezplacna-ocena-cartoon.jpg";
 
