@@ -95,6 +95,12 @@ const Navigation = () => {
             >
               Rezerviraj
             </button>
+            <a
+              href="/auth"
+              className="font-ancient text-xs text-muted-foreground hover:text-ancient-text transition-colors duration-300"
+            >
+              Admin
+            </a>
           </div>
 
           {/* Mobile menu button */}
