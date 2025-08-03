@@ -33,9 +33,15 @@ const Navigation = () => {
     };
 
     const handleMouseMove = (e: MouseEvent) => {
+      const currentScrollY = window.scrollY;
+      
       // Show navigation when mouse is near the top of the screen
       if (e.clientY < 100) {
         setIsVisible(true);
+      }
+      // Hide navigation when mouse moves away from top AND not at the very top of page
+      else if (e.clientY > 150 && currentScrollY > 50) {
+        setIsVisible(false);
       }
     };
 
