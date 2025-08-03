@@ -1,5 +1,6 @@
 
 import { useState } from 'react';
+import { Button } from "@/components/ui/button";
 import ImageGenerator from './ImageGenerator';
 
 const ServiceImageGenerator = () => {
