@@ -73,8 +73,9 @@ const Navigation = () => {
       <div className="max-w-6xl mx-auto px-6">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <div className="font-gothic text-2xl text-ancient-text">
-            <span className="text-ornament">❦</span> NIKRMANA
+          <div className="font-gothic text-2xl text-ancient-text flex items-center gap-2">
+            <img src="/lovable-uploads/a1123cdb-54ae-4d48-94f6-d8bbe4de6b9c.png" alt="NIKRMANA logo" className="h-8 w-8" />
+            NIKRMANA
           </div>
 
           {/* Desktop Navigation */}
