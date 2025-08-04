@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
+import { supabase } from "@/integrations/supabase/client";
+import { Session } from "@supabase/supabase-js";
 import FreeConsultationDialog from "./FreeConsultationDialog";
 
 const Navigation = () => {
@@ -7,6 +9,23 @@ const Navigation = () => {
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [bookingDialogOpen, setBookingDialogOpen] = useState(false);
+  const [session, setSession] = useState<Session | null>(null);
+
+  useEffect(() => {
+    // Auth state listener
+    const { data: { subscription } } = supabase.auth.onAuthStateChange(
+      (event, session) => {
+        setSession(session);
+      }
+    );
+
+    // Check for existing session
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setSession(session);
+    });
+
+    return () => subscription.unsubscribe();
+  }, []);
 
   useEffect(() => {
     let ticking = false;
@@ -96,12 +115,14 @@ const Navigation = () => {
             >
               Rezerviraj
             </button>
-            <a
-              href="/auth"
-              className="font-ancient text-xs text-muted-foreground hover:text-ancient-text transition-colors duration-300"
-            >
-              Admin
-            </a>
+            {session && (
+              <a
+                href="/auth"
+                className="font-ancient text-xs text-muted-foreground hover:text-ancient-text transition-colors duration-300"
+              >
+                Admin
+              </a>
+            )}
           </div>
 
           {/* Mobile menu button */}
