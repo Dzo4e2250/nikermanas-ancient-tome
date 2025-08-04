@@ -8,6 +8,7 @@ import { toast } from "sonner";
 import AncientTitle from "@/components/AncientTitle";
 import { User, Session } from "@supabase/supabase-js";
 import { Calendar, Users, Settings, FileImage, Plus, Eye, BarChart3 } from "lucide-react";
+import EventDialog from "@/components/EventDialog";
 
 const AdminDashboard = () => {
   const [user, setUser] = useState<User | null>(null);
@@ -20,6 +21,7 @@ const AdminDashboard = () => {
     totalUsers: 0,
     totalServices: 4
   });
+  const [eventDialogOpen, setEventDialogOpen] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -124,7 +126,7 @@ const AdminDashboard = () => {
       description: "Ustvari nove terapevtske dogodke",
       icon: Plus,
       stats: "Novi dogodki in termini",
-      action: () => navigate("/admin/events"),
+      action: () => setEventDialogOpen(true),
       color: "text-purple-600"
     },
     {
@@ -261,6 +263,12 @@ const AdminDashboard = () => {
           })}
         </div>
       </div>
+
+      <EventDialog 
+        open={eventDialogOpen} 
+        onOpenChange={setEventDialogOpen}
+        onEventCreated={loadStats}
+      />
     </div>
   );
 };

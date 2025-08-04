@@ -5,6 +5,7 @@ import AboutSection from "@/components/AboutSection";
 import ProcessSection from "@/components/ProcessSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import CallToActionSection from "@/components/CallToActionSection";
+import EventsSection from "@/components/EventsSection";
 
 
 const Index = () => {
@@ -20,6 +21,7 @@ const Index = () => {
       <div id="storitve">
         <ServicesSection />
       </div>
+      <EventsSection />
       <div id="o-nas">
         <AboutSection />
       </div>

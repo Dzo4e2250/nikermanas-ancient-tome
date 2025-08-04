@@ -72,7 +72,7 @@ const EventDialog = ({ open, onOpenChange, onEventCreated }: EventDialogProps) =
         imageUrl = await uploadImage(imageFile);
       }
 
-      const { error } = await supabase
+      const { error } = await (supabase as any)
         .from('events')
         .insert([{
           title: formData.title,
