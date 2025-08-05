@@ -4,6 +4,7 @@ import MysticalCard from "./MysticalCard";
 import AncientTitle from "./AncientTitle";
 import OrnamentalDivider from "./OrnamentalDivider";
 import BookingDialog from "./BookingDialog";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Calendar, MapPin, Clock, Users } from "lucide-react";
 import { format } from "date-fns";
 import { sl } from "date-fns/locale";
@@ -44,7 +45,7 @@ const EventsSection = () => {
   const [loading, setLoading] = useState(true);
   const [selectedService, setSelectedService] = useState<Service | undefined>();
   const [bookingDialogOpen, setBookingDialogOpen] = useState(false);
-  const [showEvents, setShowEvents] = useState(false);
+  const [eventsDialogOpen, setEventsDialogOpen] = useState(false);
 
   useEffect(() => {
     loadEvents();
@@ -85,7 +86,7 @@ const EventsSection = () => {
 
   const handleServiceClick = (service: Service) => {
     setSelectedService(service);
-    setShowEvents(true);
+    setEventsDialogOpen(true);
   };
 
   const getServiceImage = (service: Service) => {
@@ -138,70 +139,63 @@ const EventsSection = () => {
   return (
     <section className="py-20 bg-gradient-to-b from-background/50 to-background">
       <div className="max-w-6xl mx-auto px-6">
-        {!showEvents ? (
-          <>
-            <div className="text-center mb-16">
-              <AncientTitle level={2}>Skupinska terapija</AncientTitle>
-              <OrnamentalDivider />
-              <p className="text-muted-foreground font-ancient max-w-2xl mx-auto">
-                Pridružite se našim skupinskim delavnicam in dogodkom za osebnostno rast
-              </p>
-            </div>
+        <div className="text-center mb-16">
+          <AncientTitle level={2}>Skupinska terapija</AncientTitle>
+          <OrnamentalDivider />
+          <p className="text-muted-foreground font-ancient max-w-2xl mx-auto">
+            Pridružite se našim skupinskim delavnicam in dogodkom za osebnostno rast
+          </p>
+        </div>
 
-            <div className="grid md:grid-cols-2 gap-8">
-              {services.map((service) => (
-                <MysticalCard key={service.id} className="h-full flex flex-col">
-                  <div className="mb-4 overflow-hidden rounded-lg mystical-frame">
-                    <img 
-                      src={getServiceImage(service)}
-                      alt={service.name}
-                      className="w-full h-48 object-cover"
-                    />
-                  </div>
-                  
-                  <AncientTitle level={3} className="mb-4 text-left">
-                    {service.name}
-                  </AncientTitle>
-                  
-                  <p className="font-ancient text-muted-foreground leading-relaxed mb-6">
-                    {service.description}
-                  </p>
-                  
-                  <div className="mt-auto">
-                    <button 
-                      onClick={() => handleServiceClick(service)}
-                      className="w-full px-6 py-3 bg-primary/10 hover:bg-primary/20 text-primary rounded-md transition-colors duration-300 font-ancient"
-                    >
-                      Rezerviraj termin
-                    </button>
-                  </div>
-                </MysticalCard>
-              ))}
-            </div>
-
-            <div className="text-center mt-12">
-              <p className="font-ancient text-lg text-ancient-text italic">
-                "Ni čudežno zdravljenje, temveč pomoč pri odstranjevanju ovir, 
-                da človek sam aktivira svoj potencial"
+        <div className="grid md:grid-cols-2 gap-8">
+          {services.map((service) => (
+            <MysticalCard key={service.id} className="h-full flex flex-col">
+              <div className="mb-4 overflow-hidden rounded-lg mystical-frame">
+                <img 
+                  src={getServiceImage(service)}
+                  alt={service.name}
+                  className="w-full h-48 object-cover"
+                />
+              </div>
+              
+              <AncientTitle level={3} className="mb-4 text-left">
+                {service.name}
+              </AncientTitle>
+              
+              <p className="font-ancient text-muted-foreground leading-relaxed mb-6">
+                {service.description}
               </p>
-            </div>
-          </>
-        ) : (
-          <>
-            <div className="text-center mb-16">
-              <button 
-                onClick={() => setShowEvents(false)}
-                className="mb-4 text-primary hover:text-primary/80 underline font-ancient"
-              >
-                ← Nazaj na storitve
-              </button>
-              <AncientTitle level={2}>Prihajajoči dogodki</AncientTitle>
-              <OrnamentalDivider />
-              <p className="text-muted-foreground font-ancient max-w-2xl mx-auto">
-                Izberite dogodek za storitev: {selectedService?.name}
-              </p>
-            </div>
+              
+              <div className="mt-auto">
+                <button 
+                  onClick={() => handleServiceClick(service)}
+                  className="w-full px-6 py-3 bg-primary/10 hover:bg-primary/20 text-primary rounded-md transition-colors duration-300 font-ancient"
+                >
+                  Rezerviraj termin
+                </button>
+              </div>
+            </MysticalCard>
+          ))}
+        </div>
 
+        <div className="text-center mt-12">
+          <p className="font-ancient text-lg text-ancient-text italic">
+            "Ni čudežno zdravljenje, temveč pomoč pri odstranjevanju ovir, 
+            da človek sam aktivira svoj potencial"
+          </p>
+        </div>
+      </div>
+
+      {/* Dialog za prikaz dogodkov */}
+      <Dialog open={eventsDialogOpen} onOpenChange={setEventsDialogOpen}>
+        <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto">
+          <DialogHeader>
+            <DialogTitle className="font-ancient text-xl">
+              Prihajajoči dogodki - {selectedService?.name}
+            </DialogTitle>
+          </DialogHeader>
+          
+          <div className="mt-6">
             {events.length === 0 ? (
               <div className="text-center py-12">
                 <p className="font-ancient text-muted-foreground">
@@ -209,71 +203,72 @@ const EventsSection = () => {
                 </p>
               </div>
             ) : (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {events.map((event) => (
                   <MysticalCard key={event.id} className="group overflow-hidden">
                     {event.image_url && (
-                      <div className="relative h-48 overflow-hidden">
+                      <div className="relative h-32 overflow-hidden">
                         <img
                           src={event.image_url}
                           alt={event.title}
                           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                        <div className="absolute bottom-4 left-4 text-white">
-                          <div className="flex items-center gap-2 text-sm mb-1">
-                            <Calendar className="w-4 h-4" />
+                        <div className="absolute bottom-2 left-2 text-white text-xs">
+                          <div className="flex items-center gap-1 mb-1">
+                            <Calendar className="w-3 h-3" />
                             {formatDate(event.event_date)}
                           </div>
-                          <div className="flex items-center gap-2 text-sm">
-                            <Clock className="w-4 h-4" />
+                          <div className="flex items-center gap-1">
+                            <Clock className="w-3 h-3" />
                             {formatTime(event.start_time)} - {formatTime(event.end_time)}
                           </div>
                         </div>
                       </div>
                     )}
                     
-                    <div className="p-6">
-                      <h3 className="font-ancient text-xl mb-3 text-ancient-text group-hover:text-mystical-glow transition-colors">
+                    <div className="p-4">
+                      <h3 className="font-ancient text-lg mb-2 text-ancient-text group-hover:text-mystical-glow transition-colors">
                         {event.title}
                       </h3>
                       
                       {event.description && (
-                        <p className="text-muted-foreground mb-4 line-clamp-3">
+                        <p className="text-muted-foreground text-sm mb-3 line-clamp-2">
                           {event.description}
                         </p>
                       )}
 
-                      <div className="space-y-2 mb-4">
+                      <div className="space-y-1 mb-3 text-xs">
                         {event.location && (
-                          <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                            <MapPin className="w-4 h-4" />
+                          <div className="flex items-center gap-1 text-muted-foreground">
+                            <MapPin className="w-3 h-3" />
                             {event.location}
                           </div>
                         )}
                         
-                        <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                          <Users className="w-4 h-4" />
+                        <div className="flex items-center gap-1 text-muted-foreground">
+                          <Users className="w-3 h-3" />
                           Do {event.max_participants} udeležencev
                         </div>
                       </div>
 
-                      <div className="flex items-center justify-between pt-4 border-t border-ornament/20">
+                      <div className="flex items-center justify-between pt-3 border-t border-ornament/20">
                         {event.price > 0 ? (
-                          <span className="font-ancient text-lg text-ancient-text">
+                          <span className="font-ancient text-sm text-ancient-text">
                             {event.price}€
                           </span>
                         ) : (
-                          <span className="font-ancient text-lg text-mystical-glow">
+                          <span className="font-ancient text-sm text-mystical-glow">
                             Brezplačno
                           </span>
                         )}
                         
                         <button 
                           onClick={() => {
+                            setEventsDialogOpen(false);
                             setBookingDialogOpen(true);
                           }}
-                          className="px-4 py-2 bg-primary/10 hover:bg-primary/20 text-primary rounded-md transition-colors duration-300"
+                          className="px-3 py-1 bg-primary/10 hover:bg-primary/20 text-primary rounded-md transition-colors duration-300 text-sm"
                         >
                           Rezerviraj
                         </button>
@@ -283,9 +278,9 @@ const EventsSection = () => {
                 ))}
               </div>
             )}
-          </>
-        )}
-      </div>
+          </div>
+        </DialogContent>
+      </Dialog>
 
       <BookingDialog 
         open={bookingDialogOpen}
