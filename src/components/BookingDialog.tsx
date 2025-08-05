@@ -102,8 +102,14 @@ const BookingDialog = ({ open, onOpenChange, selectedService }: BookingDialogPro
   const { toast } = useToast();
 
   useEffect(() => {
-    if (open && step === 1) {
-      fetchQuestions();
+    if (open && selectedService) {
+      // Za skupinske terapije preskoči vprašalnik in pojdi direktno na korak 2
+      if (selectedService.type === 'group') {
+        setStep(2);
+        fetchUpcomingEvents();
+      } else if (step === 1) {
+        fetchQuestions();
+      }
     }
     if (open && step === 2 && selectedService?.type === 'group') {
       fetchUpcomingEvents();
@@ -518,6 +524,10 @@ const BookingDialog = ({ open, onOpenChange, selectedService }: BookingDialogPro
 
   const canProceed = () => {
     if (step === 1) {
+      // Za skupinske terapije ni vprašalnika, tako da lahko vedno naprej
+      if (selectedService?.type === 'group') {
+        return true;
+      }
       return questions.length === 0 || questions.every(q => answers[q.id]);
     }
     if (step === 2) {
@@ -577,7 +587,7 @@ const BookingDialog = ({ open, onOpenChange, selectedService }: BookingDialogPro
           </div>
 
           {/* Step content */}
-          {step === 1 && renderQuestionnaire()}
+          {step === 1 && selectedService?.type !== 'group' && renderQuestionnaire()}
           {step === 2 && selectedService?.type === 'group' && renderUpcomingEvents()}
           {step === 2 && selectedService?.type === 'individual' && renderCalendar()}
           {step === 2 && selectedService?.type === 'assessment' && renderContactForm()}
@@ -587,10 +597,18 @@ const BookingDialog = ({ open, onOpenChange, selectedService }: BookingDialogPro
           <div className="flex justify-between pt-6">
             <Button
               variant="outline"
-              onClick={() => step > 1 ? setStep(step - 1) : onOpenChange(false)}
+              onClick={() => {
+                if (selectedService?.type === 'group' && step === 2) {
+                  onOpenChange(false); // Za skupinske terapije na koraku 2 direktno zapri
+                } else if (step > 1) {
+                  setStep(step - 1);
+                } else {
+                  onOpenChange(false);
+                }
+              }}
             >
               <ArrowLeft className="w-4 h-4 mr-2" />
-              {step === 1 ? "Prekliči" : "Nazaj"}
+              {(selectedService?.type === 'group' && step === 2) || step === 1 ? "Prekliči" : "Nazaj"}
             </Button>
 
             <Button
