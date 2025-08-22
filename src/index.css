@@ -129,11 +129,6 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
-    background-image: url('/lovable-uploads/87637755-0ef6-44cb-a36d-059287db5e1d.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
   }
   
   /* Mistični okrasni okvir za slike */
