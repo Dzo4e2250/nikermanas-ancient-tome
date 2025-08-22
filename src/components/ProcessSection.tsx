@@ -40,7 +40,7 @@ const ProcessSection = () => {
           Kako Začeti Pot Preobrazbe
         </AncientTitle>
         
-        <p className="font-ancient text-lg text-center text-muted-foreground mb-12 max-w-3xl mx-auto">
+        <p className="font-ancient text-lg text-center text-black mb-12 max-w-3xl mx-auto">
           V štirih korakih se odprite za globoko notranjo preobrazbo. 
           Vsak korak vas vodi bližje k vaši avtentični naravi.
         </p>
@@ -56,7 +56,7 @@ const ProcessSection = () => {
               <AncientTitle level={3} className="mb-4 text-base">
                 {step.title}
               </AncientTitle>
-              <p className="font-ancient text-muted-foreground leading-relaxed mb-6">
+              <p className="font-ancient text-black leading-relaxed mb-6">
                 {step.description}
               </p>
               <div className="border-t border-ornament/30 pt-4">

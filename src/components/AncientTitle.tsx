@@ -17,7 +17,7 @@ const AncientTitle = ({ children, level = 1, className }: AncientTitleProps) => 
 
   return (
     <Tag className={cn(
-      "font-gothic text-ancient-text text-center",
+      "font-gothic text-black text-center",
       "drop-shadow-sm tracking-wide",
       sizeClasses[level],
       className

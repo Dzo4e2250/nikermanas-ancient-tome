@@ -29,7 +29,7 @@ const HeroSection = () => {
             <em className="text-black">Zavod za dvig zavesti</em>
           </p>
           
-          <div className="font-ancient text-base md:text-lg text-muted-foreground leading-relaxed max-w-3xl mx-auto">
+          <div className="font-ancient text-base md:text-lg text-black leading-relaxed max-w-3xl mx-auto">
             <p className="mb-2">
               Energoterapije • Meditacije • Srečanja
             </p>

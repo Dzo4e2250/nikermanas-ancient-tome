@@ -29,7 +29,7 @@ const AboutSection = () => {
                   className="w-32 h-32 mx-auto rounded-full mb-4 shadow-mystical object-cover border-2 border-ornament cursor-pointer hover:scale-105 transition-transform duration-300"
                 />
               </EnhancedBiographyDialog>
-              <p className="font-ancient text-muted-foreground leading-relaxed mb-2">
+              <p className="font-ancient text-black leading-relaxed mb-2">
                 <strong>Ženski princip</strong> - intuitivna, mehka in fluidna kot voda. 
                 Nosi energijo nežnosti in globokega razumevanja. 
                 Vodnica na poti k srčni povezanosti.
@@ -52,7 +52,7 @@ const AboutSection = () => {
                   className="w-32 h-32 mx-auto rounded-full mb-4 shadow-mystical object-cover border-2 border-ornament cursor-pointer hover:scale-105 transition-transform duration-300"
                 />
               </EnhancedBiographyDialog>
-              <p className="font-ancient text-muted-foreground leading-relaxed mb-2">
+              <p className="font-ancient text-black leading-relaxed mb-2">
                 <strong>Moški princip</strong> - predstavlja stabilnost, moč in prizemljenost. 
                 Temelj, ki omogoča varno raziskovanje notranjih svetov in preobrazbo.
               </p>
@@ -74,7 +74,7 @@ const AboutSection = () => {
                   className="w-32 h-32 mx-auto rounded-full mb-4 shadow-mystical object-cover border-2 border-ornament cursor-pointer hover:scale-105 transition-transform duration-300"
                 />
               </EnhancedBiographyDialog>
-              <p className="font-ancient text-muted-foreground leading-relaxed mb-2">
+              <p className="font-ancient text-black leading-relaxed mb-2">
                 <strong>Srčni varuh</strong> - črno-bel francoski buldog s pogledom, ki gre globlje od oči. 
                 Terapevt po naravi, ki ve kdaj božati in kdaj samo biti.
               </p>
@@ -87,7 +87,7 @@ const AboutSection = () => {
         
         <div className="text-center mt-12">
           <MysticalCard className="max-w-2xl mx-auto">
-            <p className="font-ancient text-lg text-ancient-text leading-relaxed">
+            <p className="font-ancient text-lg text-black leading-relaxed">
               <em>"Skupaj s Santiagom ustvarjamo varen prostor, kjer udeleženci čutijo ljubezen, 
               umirjenost in dvig zavesti. Sinergija človeških in živalskih energij omogoča 
               globoko preobrazbo iz 3D v 5D zavest."</em>

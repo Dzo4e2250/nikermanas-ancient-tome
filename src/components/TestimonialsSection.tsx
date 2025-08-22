@@ -83,7 +83,7 @@ const TestimonialsSection = () => {
                       <h4 className="font-gothic text-sm text-ornament font-semibold group-hover:text-primary transition-colors duration-300">
                         {testimonial.author}
                       </h4>
-                      <p className="font-ancient text-xs text-muted-foreground mt-1">
+                      <p className="font-ancient text-xs text-black mt-1">
                         {testimonial.location}
                       </p>
                     </div>
@@ -93,7 +93,7 @@ const TestimonialsSection = () => {
                   <div className="flex-1 min-w-0">
                     <div className="flex items-start">
                       <div className="text-2xl text-ornament/40 mr-2 leading-none flex-shrink-0">"</div>
-                      <blockquote className="font-ancient text-muted-foreground leading-relaxed italic flex-1">
+                      <blockquote className="font-ancient text-black leading-relaxed italic flex-1">
                         {testimonial.text}
                       </blockquote>
                       <div className="text-2xl text-ornament/40 ml-2 leading-none rotate-180 flex-shrink-0 self-end">"</div>
@@ -109,7 +109,7 @@ const TestimonialsSection = () => {
         </div>
         
         <div className="text-center mt-12">
-          <p className="font-ancient text-lg text-ancient-text italic max-w-2xl mx-auto">
+          <p className="font-ancient text-lg text-black italic max-w-2xl mx-auto">
             "Vsi ljudje v našem življenju so angeli, ki nas učijo ljubezni. 
             Vsaka izkušnja nas vodi k višji zavesti srca."
           </p>
