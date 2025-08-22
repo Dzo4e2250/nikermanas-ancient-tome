@@ -103,7 +103,7 @@ const Navigation = () => {
               <a
                 key={item.href}
                 href={item.href}
-                className="font-ancient text-black hover:text-black transition-colors duration-300 relative group"
+                className="font-ancient font-bold text-black hover:text-black transition-colors duration-300 relative group"
               >
                 {item.label}
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-ornament transition-all duration-300 group-hover:w-full"></span>
@@ -145,7 +145,7 @@ const Navigation = () => {
               <a
                 key={item.href}
                 href={item.href}
-                className="block font-ancient text-black hover:text-black py-2 transition-colors duration-300"
+                className="block font-ancient font-bold text-black hover:text-black py-2 transition-colors duration-300"
                 onClick={() => setIsOpen(false)}
               >
                 {item.label}
