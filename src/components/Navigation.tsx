@@ -3,6 +3,7 @@ import { cn } from "@/lib/utils";
 import { supabase } from "@/integrations/supabase/client";
 import { Session } from "@supabase/supabase-js";
 import FreeConsultationDialog from "./FreeConsultationDialog";
+import BackgroundRemovedLogo from "./BackgroundRemovedLogo";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -93,7 +94,11 @@ const Navigation = () => {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="font-gothic text-2xl text-black flex items-center gap-2">
-            <img src="/lovable-uploads/a1123cdb-54ae-4d48-94f6-d8bbe4de6b9c.png" alt="NIKRMANA logo" className="h-8 w-8" />
+            <BackgroundRemovedLogo 
+              originalSrc="/lovable-uploads/a1123cdb-54ae-4d48-94f6-d8bbe4de6b9c.png" 
+              alt="NIKRMANA logo" 
+              className="h-8 w-8" 
+            />
             NIKRMANA
           </div>
 
