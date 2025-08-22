@@ -25,7 +25,7 @@ const HeroSection = () => {
           
           <OrnamentalDivider />
           
-          <p className="font-ancient text-lg md:text-xl text-ancient-text leading-relaxed max-w-2xl mx-auto mb-4">
+          <p className="font-ancient text-lg md:text-xl text-black leading-relaxed max-w-2xl mx-auto mb-4">
             <em>Zavod za dvig zavesti</em>
           </p>
           
