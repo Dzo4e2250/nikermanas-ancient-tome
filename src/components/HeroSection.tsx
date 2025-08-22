@@ -7,7 +7,7 @@ const HeroSection = () => {
   const [bookingDialogOpen, setBookingDialogOpen] = useState(false);
 
   return (
-    <section className="min-h-screen flex items-center justify-center relative pt-16 bg-cover bg-center bg-no-repeat" style={{backgroundImage: 'url(/lovable-uploads/c41033da-76b1-4518-b6bc-08e76dbd185a.png)'}}>{/* pt-16 for navigation space */}
+    <section className="min-h-screen flex items-center justify-center relative pt-16 bg-cover bg-center bg-no-repeat" style={{backgroundImage: 'url(/lovable-uploads/a1d2ee49-c11c-4e15-b11a-c5889f3abbb7.png)'}}>{/* pt-16 for navigation space */}
       {/* Decorative corner ornaments */}
       <div className="absolute top-8 left-8 text-4xl text-ornament opacity-60">❦</div>
       <div className="absolute top-8 right-8 text-4xl text-ornament opacity-60 transform scale-x-[-1]">❦</div>
