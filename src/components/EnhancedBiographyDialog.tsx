@@ -164,7 +164,7 @@ const EnhancedBiographyDialog = ({ person, avatar, name, children }: EnhancedBio
             <div className="grid md:grid-cols-2 gap-4">
               {bio.specialties.map((specialty, index) => (
                 <div key={index} className="flex items-center">
-                  <span className="text-ornament mr-3">🐦</span>
+                  <img src="/lovable-uploads/ad23fb3e-4e2f-4d83-8500-3632c8984d16.png" alt="raven" className="w-4 h-4 mr-3" />
                   <span className="font-ancient text-muted-foreground">{specialty}</span>
                 </div>
               ))}
