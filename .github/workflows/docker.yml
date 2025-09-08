@@ -1,0 +1,38 @@
+name: Build and Push Docker
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch: {}
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write  # for GHCR
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # (Optional) create .env.production file if Secrets are set
+      - name: Create .env.production (optional)
+        run: |
+          touch .env.production
+          if [ -n "${{ secrets.VITE_SUPABASE_URL }}" ]; then echo "VITE_SUPABASE_URL=${{ secrets.VITE_SUPABASE_URL }}" >> .env.production; fi
+          if [ -n "${{ secrets.VITE_SUPABASE_ANON_KEY }}" ]; then echo "VITE_SUPABASE_ANON_KEY=${{ secrets.VITE_SUPABASE_ANON_KEY }}" >> .env.production; fi
+
+      - name: Log in to GHCR
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and push
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: ./Dockerfile
+          push: true
+          tags: ghcr.io/${{ github.repository }}:latest
