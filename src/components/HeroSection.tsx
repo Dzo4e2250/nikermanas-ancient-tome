@@ -9,10 +9,10 @@ const HeroSection = () => {
   return (
     <section className="min-h-screen flex items-center justify-center relative pt-16 bg-cover bg-center bg-no-repeat" style={{backgroundImage: 'url(/lovable-uploads/87637755-0ef6-44cb-a36d-059287db5e1d.png)'}}>{/* pt-16 for navigation space */}
       {/* Decorative corner ornaments */}
-      <div className="absolute top-8 left-8 text-4xl text-ornament opacity-60">❦</div>
-      <div className="absolute top-8 right-8 text-4xl text-ornament opacity-60 transform scale-x-[-1]">❦</div>
-      <div className="absolute bottom-8 left-8 text-4xl text-ornament opacity-60 transform scale-y-[-1]">❦</div>
-      <div className="absolute bottom-8 right-8 text-4xl text-ornament opacity-60 transform scale-[-1]">❦</div>
+      <div className="absolute top-8 left-8 text-4xl text-ornament opacity-60">🐦‍⬛</div>
+      <div className="absolute top-8 right-8 text-4xl text-ornament opacity-60 transform scale-x-[-1]">🐦‍⬛</div>
+      <div className="absolute bottom-8 left-8 text-4xl text-ornament opacity-60 transform scale-y-[-1]">🐦‍⬛</div>
+      <div className="absolute bottom-8 right-8 text-4xl text-ornament opacity-60 transform scale-[-1]">🐦‍⬛</div>
       
       <div className="text-center max-w-4xl mx-auto px-6 relative z-10">
         <div className="relative">

@@ -31,7 +31,7 @@ const Index = () => {
       {/* Ancient footer */}
       <footer className="bg-primary text-primary-foreground py-8 relative">
         <div className="max-w-4xl mx-auto px-6 text-center">
-          <div className="text-2xl mb-4 text-mystical-glow">❦</div>
+          <div className="text-2xl mb-4 text-mystical-glow">🐦‍⬛</div>
           <p className="font-gothic text-lg mb-2">NIKRMANA</p>
           <p className="font-ancient text-sm opacity-80">
             Zavod za dvig zavesti • Pesnica pri Mariboru
