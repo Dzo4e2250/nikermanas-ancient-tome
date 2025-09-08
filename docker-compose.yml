@@ -1,0 +1,18 @@
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: nikermana-web
+    restart: unless-stopped
+    ports:
+      - "5678:80"
+    # environment variables can be set if needed
+  # optionally you could use watchtower as described previously if you plan to auto-update
+  # watchtower:
+  #   image: containrrr/watchtower
+  #   container_name: watchtower
+  #   restart: unless-stopped
+  #   volumes:
+  #     - /var/run/docker.sock:/var/run/docker.sock
+  #   command: --interval 60 nikermana-web
