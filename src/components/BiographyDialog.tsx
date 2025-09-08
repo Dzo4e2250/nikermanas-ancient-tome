@@ -103,7 +103,7 @@ const BiographyDialog = ({ person, avatar, name, children }: BiographyDialogProp
             <div className="grid md:grid-cols-2 gap-4">
               {bio.specialties.map((specialty, index) => (
                 <div key={index} className="flex items-center">
-                  <span className="text-ornament mr-3">🐦‍⬛</span>
+                  <span className="text-ornament mr-3">🐦</span>
                   <span className="font-ancient text-muted-foreground">{specialty}</span>
                 </div>
               ))}

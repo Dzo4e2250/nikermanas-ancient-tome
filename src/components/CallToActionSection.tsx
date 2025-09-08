@@ -7,10 +7,10 @@ const CallToActionSection = () => {
     <section className="py-16 bg-primary text-primary-foreground relative overflow-hidden">
       {/* Mystical background elements */}
       <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-10 left-10 text-6xl">🐦‍⬛</div>
+        <div className="absolute top-10 left-10 text-6xl">🐦</div>
         <div className="absolute top-20 right-20 text-4xl">✧</div>
         <div className="absolute bottom-20 left-20 text-5xl">◊</div>
-        <div className="absolute bottom-10 right-10 text-6xl transform rotate-45">🐦‍⬛</div>
+        <div className="absolute bottom-10 right-10 text-6xl transform rotate-45">🐦</div>
       </div>
       
       <div className="max-w-6xl mx-auto px-6 relative z-10">
