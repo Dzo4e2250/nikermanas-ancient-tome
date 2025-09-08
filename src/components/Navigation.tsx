@@ -95,9 +95,9 @@ const Navigation = () => {
           {/* Logo */}
           <div className="font-gothic text-2xl text-black flex items-center gap-2">
             <img 
-              src="/lovable-uploads/f1bc1069-4c8c-46a7-85d8-285882dbb31d.png" 
+              src="/lovable-uploads/6ccb318d-68e4-43ac-81fe-997507ecce65.png" 
               alt="NIKRMANA logo" 
-              className="h-8 w-8 bg-white rounded-full p-1" 
+              className="h-8 w-8" 
             />
             NIKRMANA
           </div>
