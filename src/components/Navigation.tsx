@@ -94,10 +94,10 @@ const Navigation = () => {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="font-gothic text-2xl text-black flex items-center gap-2">
-            <BackgroundRemovedLogo 
-              originalSrc="/lovable-uploads/a1123cdb-54ae-4d48-94f6-d8bbe4de6b9c.png" 
+            <img 
+              src="/lovable-uploads/f1bc1069-4c8c-46a7-85d8-285882dbb31d.png" 
               alt="NIKRMANA logo" 
-              className="h-8 w-8" 
+              className="h-8 w-8 bg-white rounded-full p-1" 
             />
             NIKRMANA
           </div>
