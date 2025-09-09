@@ -3,10 +3,10 @@ const ComingSoon = () => {
     <div className="min-h-screen bg-gradient-to-br from-background to-card flex items-center justify-center font-ancient bg-fixed">
       <div className="text-center max-w-2xl mx-auto p-10 bg-parchment border-4 border-ancient-silver rounded-2xl shadow-mystical relative">
         {/* Decorative ornaments */}
-        <div className="absolute top-4 left-4 text-ancient-silver text-2xl opacity-60">✦</div>
-        <div className="absolute top-4 right-4 text-ancient-silver text-2xl opacity-60 transform scale-x-[-1]">✦</div>
-        <div className="absolute bottom-4 left-4 text-ancient-silver text-2xl opacity-60 transform scale-y-[-1]">✦</div>
-        <div className="absolute bottom-4 right-4 text-ancient-silver text-2xl opacity-60 transform scale-[-1]">✦</div>
+        <div className="absolute top-4 left-4 opacity-60"><img src="/lovable-uploads/ad23fb3e-4e2f-4d83-8500-3632c8984d16.png" alt="raven" className="w-6 h-6" /></div>
+        <div className="absolute top-4 right-4 opacity-60 transform scale-x-[-1]"><img src="/lovable-uploads/ad23fb3e-4e2f-4d83-8500-3632c8984d16.png" alt="raven" className="w-6 h-6" /></div>
+        <div className="absolute bottom-4 left-4 opacity-60 transform scale-y-[-1]"><img src="/lovable-uploads/ad23fb3e-4e2f-4d83-8500-3632c8984d16.png" alt="raven" className="w-6 h-6" /></div>
+        <div className="absolute bottom-4 right-4 opacity-60 transform scale-[-1]"><img src="/lovable-uploads/ad23fb3e-4e2f-4d83-8500-3632c8984d16.png" alt="raven" className="w-6 h-6" /></div>
         
         {/* Logo circle */}
         <div className="w-32 h-32 mx-auto mb-8 flex items-center justify-center">
