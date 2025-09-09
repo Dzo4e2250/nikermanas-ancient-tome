@@ -103,7 +103,7 @@ const Navigation = () => {
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden lg:flex items-center space-x-8">
             {navItems.map((item) => (
               <a
                 key={item.href}
@@ -130,10 +130,10 @@ const Navigation = () => {
             )}
           </div>
 
-          {/* Mobile menu button */}
+          {/* Mobile & Tablet menu button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden text-black"
+            className="lg:hidden text-black"
           >
             <div className="w-6 h-6 flex flex-col justify-center">
               <div className={cn("w-full h-0.5 bg-current transition-all", isOpen && "rotate-45 translate-y-1")}></div>
@@ -143,9 +143,9 @@ const Navigation = () => {
           </button>
         </div>
 
-        {/* Mobile Navigation */}
+        {/* Mobile & Tablet Navigation */}
         {isOpen && (
-          <div className="md:hidden bg-background/95 backdrop-blur-sm border border-ornament/20 pb-4 rounded-lg mx-4 mt-2">
+          <div className="lg:hidden bg-background/95 backdrop-blur-sm border border-ornament/20 pb-4 rounded-lg mx-4 mt-2">
             {navItems.map((item) => (
               <a
                 key={item.href}
