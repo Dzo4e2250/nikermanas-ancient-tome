@@ -9,7 +9,7 @@ const ComingSoon = () => {
         <div className="absolute bottom-4 right-4 text-ancient-silver text-2xl opacity-60 transform scale-[-1]">✦</div>
         
         {/* Logo circle */}
-        <div className="w-32 h-32 mx-auto mb-8 bg-card border-2 border-ancient-silver rounded-full flex items-center justify-center p-4">
+        <div className="w-32 h-32 mx-auto mb-8 flex items-center justify-center">
           <img 
             src="/lovable-uploads/7af9c884-5752-43f5-9688-cc74a903a9dd.png" 
             alt="NIKRMANA logo" 
