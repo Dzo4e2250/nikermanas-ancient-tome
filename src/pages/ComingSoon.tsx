@@ -35,11 +35,23 @@ const ComingSoon = () => {
           <h2 className="font-gothic text-2xl font-semibold mb-6 text-primary">Za več informacij nas kontaktirajte</h2>
           
           <div className="text-lg mb-4 text-ancient-text">
-            <strong className="text-primary">E-pošta:</strong> info@nikrmanapesnica.si
+            <strong className="text-primary">E-pošta:</strong> 
+            <a 
+              href="mailto:info@nikrmanapesnica.si" 
+              className="ml-2 text-primary hover:text-secondary transition-colors underline"
+            >
+              info@nikrmanapesnica.si
+            </a>
           </div>
           
           <div className="text-lg mb-6 text-ancient-text">
-            <strong className="text-primary">Telefon:</strong> 051 358 273
+            <strong className="text-primary">Telefon:</strong> 
+            <a 
+              href="tel:051358273" 
+              className="ml-2 text-primary hover:text-secondary transition-colors underline"
+            >
+              051 358 273
+            </a>
           </div>
           
           <div className="flex items-center justify-center my-6">
