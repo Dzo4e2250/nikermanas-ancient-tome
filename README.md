@@ -26,9 +26,14 @@ cd nikermanas-ancient-tome
 
 ### 2. Pripravi logo za "Kmalu prihaja" stran
 ```bash
-# Logo je že v projektu - samo preveri da obstaja
-ls -la coming-soon/public/
-# Če logo.png ne obstaja, uporabi placeholder ali kopiraj iz src/assets/
+# Kopiraj logo iz glavne aplikacije v coming-soon direktorij
+cp public/lovable-uploads/7af9c884-5752-43f5-9688-cc74a903a9dd.png coming-soon/public/logo.png
+
+# ALI uporabi logo iz src/assets (če obstaja)
+cp src/assets/raven-logo-transparent.png coming-soon/public/logo.png
+
+# Preveri da obstaja
+ls -la coming-soon/public/logo.png
 ```
 
 ### 3. Poženi ustrezno aplikacijo
@@ -71,6 +76,9 @@ docker compose logs -f
 ```bash
 # Povleci najnovejše spremembe
 git pull origin main
+
+# Kopiraj logo (če se je spremenil)
+cp public/lovable-uploads/7af9c884-5752-43f5-9688-cc74a903a9dd.png coming-soon/public/logo.png
 
 # Obnovi ustrezno aplikacijo
 # Za "Kmalu prihaja":
@@ -129,15 +137,29 @@ sudo usermod -aG docker $USER
 docker ps
 ```
 
+### Če se logo ne prikazuje:
+```bash
+# Preveri da obstaja logo
+ls -la coming-soon/public/logo.png
+
+# Kopiraj logo iz glavne aplikacije
+cp public/lovable-uploads/7af9c884-5752-43f5-9688-cc74a903a9dd.png coming-soon/public/logo.png
+
+# Obnovi coming-soon aplikacijo
+docker compose -f docker-compose.coming-soon.yml up -d --build
+```
+
 ## 📁 Struktura projekta
 
 ```
 .
 ├── coming-soon/                    # Ločena "Kmalu prihaja" aplikacija
 │   ├── src/
-│   ├── public/logo.png            # Logo za coming-soon stran
+│   ├── public/logo.png            # Logo za coming-soon stran (kopiraj iz glavne app)
 │   ├── Dockerfile
 │   └── package.json
+├── public/lovable-uploads/         # Glavne slike aplikacije
+│   └── 7af9c884...png            # Originalni logo
 ├── docker-compose.yml             # Glavna aplikacija (port 3000)
 ├── docker-compose.coming-soon.yml # "Kmalu prihaja" stran (port 3001)
 └── README.md
@@ -151,14 +173,17 @@ docker ps
 git clone https://github.com/Dzo4e2250/nikermanas-ancient-tome
 cd nikermanas-ancient-tome
 
-# 2. Zaženi "Kmalu prihaja" stran
+# 2. Kopiraj logo
+cp public/lovable-uploads/7af9c884-5752-43f5-9688-cc74a903a9dd.png coming-soon/public/logo.png
+
+# 3. Zaženi "Kmalu prihaja" stran
 docker compose -f docker-compose.coming-soon.yml up -d --build
 
-# 3. Preveri ali deluje
+# 4. Preveri ali deluje
 docker ps
 curl http://localhost:3001
 
-# 4. Oglej si v brskalniku
+# 5. Oglej si v brskalniku
 echo "Odpri http://localhost:3001 v brskalniku"
 ```
 
