@@ -5,8 +5,9 @@ networks:
 
 services:
   web:
-    image: ghcr.io/dzo4e2250/nikermanas-ancient-tome:latest
+#    image: ghcr.io/dzo4e2250/nikermanas-ancient-tome:latest
     container_name: nikermanas-web
+        build: . .
     ports:
       - "5678:80"
     networks:
