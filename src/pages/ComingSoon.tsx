@@ -39,7 +39,7 @@ const ComingSoon = () => {
           </div>
           
           <div className="text-lg mb-6 text-ancient-text">
-            <strong className="text-primary">Telefon:</strong> +386 XX XXX XXX
+            <strong className="text-primary">Telefon:</strong> 051 358 273
           </div>
           
           <div className="flex items-center justify-center my-6">
