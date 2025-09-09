@@ -56,7 +56,7 @@ const ComingSoon = () => {
           
           <div className="flex items-center justify-center my-6">
             <div className="w-12 h-px bg-ancient-silver"></div>
-            <span className="mx-6 text-ancient-silver text-lg">✦</span>
+            <div className="mx-6"><img src="/lovable-uploads/ad23fb3e-4e2f-4d83-8500-3632c8984d16.png" alt="raven" className="w-4 h-4" /></div>
             <div className="w-12 h-px bg-ancient-silver"></div>
           </div>
           
