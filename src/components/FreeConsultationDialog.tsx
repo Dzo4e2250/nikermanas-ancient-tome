@@ -46,14 +46,40 @@ const FreeConsultationDialog = ({ open, onOpenChange }: FreeConsultationDialogPr
       return;
     }
 
+    // Check if user is authenticated
+    const { data: { user } } = await supabase.auth.getUser();
+    if (!user) {
+      toast({
+        title: "Potrebna je prijava",
+        description: "Za rezervacijo se morate prijaviti. Preusmerjeni boste na prijavno stran.",
+        variant: "destructive"
+      });
+      // Redirect to auth page
+      window.location.href = '/auth';
+      return;
+    }
+
     setIsSubmitting(true);
 
     try {
+      // Get the correct service ID for free consultation
+      const { data: services } = await supabase
+        .from('services')
+        .select('id')
+        .eq('name', 'Brezplačen pogovor')
+        .single();
+
+      const serviceId = services?.id;
+      if (!serviceId) {
+        throw new Error('Storitev ni na voljo');
+      }
+
       // Create booking record
       const { error } = await supabase
         .from('bookings')
         .insert({
-          service_id: 'free-consultation',
+          service_id: serviceId,
+          user_id: user.id,
           booking_date: selectedDate.toISOString().split('T')[0],
           booking_time: selectedTime,
           client_name: contactInfo.name,

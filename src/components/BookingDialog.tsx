@@ -166,6 +166,19 @@ const BookingDialog = ({ open, onOpenChange, selectedService }: BookingDialogPro
   };
 
   const handleSubmitBooking = async () => {
+    // Check if user is authenticated
+    const { data: { user } } = await supabase.auth.getUser();
+    if (!user) {
+      toast({
+        title: "Potrebna je prijava",
+        description: "Za rezervacijo se morate prijaviti. Preusmerjeni boste na prijavno stran.",
+        variant: "destructive"
+      });
+      // Redirect to auth page
+      window.location.href = '/auth';
+      return;
+    }
+
     if (!selectedService) {
       toast({
         title: "Napaka",
@@ -222,6 +235,7 @@ const BookingDialog = ({ open, onOpenChange, selectedService }: BookingDialogPro
     try {
       const bookingData: any = {
         service_id: selectedService.id,
+        user_id: user.id,
         client_name: contactInfo.name,
         client_email: contactInfo.email,
         client_phone: contactInfo.phone,

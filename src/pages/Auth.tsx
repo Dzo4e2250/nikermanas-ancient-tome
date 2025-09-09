@@ -21,15 +21,37 @@ const Auth = () => {
     const checkAuth = async () => {
       const { data: { session } } = await supabase.auth.getSession();
       if (session?.user) {
-        navigate("/admin");
+        // Check if user is admin, if not redirect to main page
+        const { data: userRole } = await supabase
+          .from('user_roles')
+          .select('role')
+          .eq('user_id', session.user.id)
+          .single();
+        
+        if (userRole?.role === 'admin') {
+          navigate("/admin");
+        } else {
+          navigate("/");
+        }
       }
     };
     checkAuth();
 
     // Listen for auth changes
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
+    const { data: { subscription } } = supabase.auth.onAuthStateChange(async (event, session) => {
       if (event === 'SIGNED_IN' && session?.user) {
-        navigate("/admin");
+        // Check if user is admin, if not redirect to main page
+        const { data: userRole } = await supabase
+          .from('user_roles')
+          .select('role')
+          .eq('user_id', session.user.id)
+          .single();
+        
+        if (userRole?.role === 'admin') {
+          navigate("/admin");
+        } else {
+          navigate("/");
+        }
       }
     });
 
@@ -60,7 +82,7 @@ const Auth = () => {
     setLoading(true);
 
     try {
-      const redirectUrl = `${window.location.origin}/admin`;
+      const redirectUrl = `${window.location.origin}/`;
       
       const { error } = await supabase.auth.signUp({
         email,
@@ -86,9 +108,9 @@ const Auth = () => {
     <div className="min-h-screen bg-gradient-to-b from-primary/10 to-background flex items-center justify-center p-4">
       <Card className="w-full max-w-md">
         <CardHeader className="text-center">
-          <AncientTitle level={2}>Administrativni dostop</AncientTitle>
+          <AncientTitle level={2}>Prijava</AncientTitle>
           <CardDescription>
-            Prijavite se za dostop do administrativnega vmesnika
+            Prijavite se za rezervacijo storitev ali administrativni dostop
           </CardDescription>
         </CardHeader>
         <CardContent>

@@ -30,6 +30,7 @@ export type Database = {
           status: string
           therapist_name: string
           updated_at: string
+          user_id: string | null
         }
         Insert: {
           availability_id: string
@@ -46,6 +47,7 @@ export type Database = {
           status?: string
           therapist_name: string
           updated_at?: string
+          user_id?: string | null
         }
         Update: {
           availability_id?: string
@@ -62,6 +64,7 @@ export type Database = {
           status?: string
           therapist_name?: string
           updated_at?: string
+          user_id?: string | null
         }
         Relationships: [
           {
