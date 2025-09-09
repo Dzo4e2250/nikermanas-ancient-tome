@@ -77,7 +77,7 @@ const ComingSoon = () => {
           <div className="md:hidden space-y-4 mb-6">
             <a 
               href="tel:051358273"
-              className="flex items-center justify-center w-full bg-green-600 hover:bg-green-700 text-white py-5 px-6 rounded-xl font-bold text-xl shadow-lg transition-all duration-200 active:scale-95"
+              className="flex items-center justify-center w-full bg-primary hover:bg-primary/90 text-primary-foreground py-5 px-6 rounded-xl font-bold text-xl shadow-lg transition-all duration-200 active:scale-95"
             >
               <span className="text-2xl mr-3">📞</span>
               <div className="text-center">
