@@ -9,10 +9,10 @@ const HeroSection = () => {
   return (
     <section className="min-h-screen flex items-center justify-center relative pt-16 bg-cover bg-center bg-no-repeat" style={{backgroundImage: 'url(/lovable-uploads/87637755-0ef6-44cb-a36d-059287db5e1d.png)'}}>{/* pt-16 for navigation space */}
       {/* Decorative corner ornaments */}
-      <div className="absolute top-8 left-8 opacity-60 hidden md:block"><img src="/lovable-uploads/ad23fb3e-4e2f-4d83-8500-3632c8984d16.png" alt="raven" className="w-10 h-10" /></div>
-      <div className="absolute top-8 right-8 opacity-60 transform scale-x-[-1] hidden md:block"><img src="/lovable-uploads/ad23fb3e-4e2f-4d83-8500-3632c8984d16.png" alt="raven" className="w-10 h-10" /></div>
-      <div className="absolute bottom-8 left-8 opacity-60 transform scale-y-[-1] hidden md:block"><img src="/lovable-uploads/ad23fb3e-4e2f-4d83-8500-3632c8984d16.png" alt="raven" className="w-10 h-10" /></div>
-      <div className="absolute bottom-8 right-8 opacity-60 transform scale-[-1] hidden md:block"><img src="/lovable-uploads/ad23fb3e-4e2f-4d83-8500-3632c8984d16.png" alt="raven" className="w-10 h-10" /></div>
+      <div className="absolute top-8 left-8 opacity-60 hidden lg:block"><img src="/lovable-uploads/ad23fb3e-4e2f-4d83-8500-3632c8984d16.png" alt="raven" className="w-10 h-10" /></div>
+      <div className="absolute top-8 right-8 opacity-60 transform scale-x-[-1] hidden lg:block"><img src="/lovable-uploads/ad23fb3e-4e2f-4d83-8500-3632c8984d16.png" alt="raven" className="w-10 h-10" /></div>
+      <div className="absolute bottom-8 left-8 opacity-60 transform scale-y-[-1] hidden lg:block"><img src="/lovable-uploads/ad23fb3e-4e2f-4d83-8500-3632c8984d16.png" alt="raven" className="w-10 h-10" /></div>
+      <div className="absolute bottom-8 right-8 opacity-60 transform scale-[-1] hidden lg:block"><img src="/lovable-uploads/ad23fb3e-4e2f-4d83-8500-3632c8984d16.png" alt="raven" className="w-10 h-10" /></div>
       
       <div className="text-center max-w-4xl mx-auto px-6 relative z-10">
         <div className="relative">
