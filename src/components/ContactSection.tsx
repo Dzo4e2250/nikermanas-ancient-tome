@@ -28,7 +28,7 @@ const ContactSection = () => {
               </div>
               <div className="flex items-center">
                 <span className="text-ornament mr-3">✉️</span>
-                <span>nikrmanapesnica@gmail.com</span>
+                <span>info@nikrmanapesnica.si</span>
               </div>
               <div className="flex items-center">
                 <span className="text-ornament mr-3">🌐</span>

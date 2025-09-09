@@ -51,8 +51,8 @@ const CallToActionSection = () => {
               
               <div className="flex items-center space-x-3">
                 <span className="text-xl">✉️</span>
-                <a href="mailto:nikrmanapesnica@gmail.com" className="font-ancient text-primary-foreground hover:text-mystical-glow transition-colors break-all">
-                  nikrmanapesnica@gmail.com
+                <a href="mailto:info@nikrmanapesnica.si" className="font-ancient text-primary-foreground hover:text-mystical-glow transition-colors break-all">
+                  info@nikrmanapesnica.si
                 </a>
               </div>
             </div>
@@ -105,7 +105,7 @@ const CallToActionSection = () => {
           </a>
           
           <a 
-            href="mailto:nikrmanapesnica@gmail.com"
+            href="mailto:info@nikrmanapesnica.si"
             className="inline-flex items-center font-ancient border-2 border-primary-foreground text-primary-foreground px-8 py-4 rounded hover:bg-primary-foreground hover:text-primary transition-all duration-300 transform hover:scale-105"
           >
             <span className="mr-2">✉️</span>
