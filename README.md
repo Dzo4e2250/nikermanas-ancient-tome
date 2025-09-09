@@ -24,18 +24,22 @@ Aplikacija je statična; Vite pripravi datoteke v mapo `dist` in jih nato servir
      # zgradi sliko in zažene kontejner v ozadju (detached)
      docker compose up -d --build
      ```
-     Storitev je definirana v [`docker-compose.yml`](docker-compose.yml). Ta zgradi sliko s priloženim [`Dockerfile`](Dockerfile) in na hostu izpostavi vrata **5678**.
+     Storitev je definirana v [`docker-compose.yml`](docker-compose.yml). Ta zgradi sliko s priloženim [`Dockerfile`](Dockerfile) in na hostu izpostavi vrata **5678** (glavna stran) in **5677** ("prihaja kmalu" stran).
 
    - **Z enim ukazom docker**:
      ```sh
      # zgradi sliko
      docker build -t nikermanas-ancient-tome .
-     # zažene kontejner in preslika vrata 5678 na 80
-     docker run -dp 5678:80 nikermanas-ancient-tome
+     # zažene kontejner in preslika vrata 5678 na 80 ter 5677 na 5677
+     docker run -dp 5678:80 -p 5677:5677 nikermanas-ancient-tome
      ```
 
 4. **Odprite aplikacijo**  
-   V brskalniku obiščite [http://localhost:5678](http://localhost:5678) (ali `http://<ip-strežnika>:5678` na oddaljenem strežniku). Prikazala se bo začetna stran Nikermanas Ancient Tome.
+   Aplikacija je dostopna na dveh vrat:
+   - **Glavna stran**: [http://localhost:5678](http://localhost:5678) (ali `http://<ip-strežnika>:5678`)
+   - **"Prihaja kmalu" stran**: [http://localhost:5677](http://localhost:5677) (ali `http://<ip-strežnika>:5677`)
+   
+   "Prihaja kmalu" stran prikazuje sporočilo o obdelavi z kontaktnimi podatki za stranke.
 
 ### Samodejne posodobitve kontejnerja
 
