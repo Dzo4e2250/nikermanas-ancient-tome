@@ -11,7 +11,7 @@ const ComingSoon = () => {
         {/* Logo circle */}
         <div className="w-32 h-32 mx-auto mb-8 bg-card border-2 border-ancient-silver rounded-full flex items-center justify-center p-4">
           <img 
-            src="/lovable-uploads/f1bc1069-4c8c-46a7-85d8-285882dbb31d.png" 
+            src="/lovable-uploads/7af9c884-5752-43f5-9688-cc74a903a9dd.png" 
             alt="NIKRMANA logo" 
             className="w-full h-full object-contain"
           />
