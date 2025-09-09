@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  coming-soon:
+    build:
+      context: ./coming-soon
+      dockerfile: Dockerfile
+    ports:
+      - "3001:80"
+    container_name: nikrmana-coming-soon
+    restart: unless-stopped
+    volumes:
+      - ./coming-soon/public/logo.png:/usr/share/nginx/html/logo.png:ro
