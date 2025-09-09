@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NIKRMANA - Prihaja kmalu</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Crimson+Text:ital,wght@0,400;1,400&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Crimson Text', serif;
+            background: linear-gradient(135deg, hsl(45, 20%, 96%), hsl(45, 25%, 94%));
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: hsl(0, 0%, 15%);
+            background-attachment: fixed;
+        }
+        
+        .container {
+            text-align: center;
+            max-width: 600px;
+            padding: 40px;
+            background: hsl(45, 30%, 92%);
+            border: 3px solid hsl(0, 0%, 60%);
+            border-radius: 16px;
+            box-shadow: 
+                0 0 15px hsl(0, 0%, 60% / 0.4),
+                inset 0 0 10px hsl(0, 0%, 60% / 0.1),
+                0 4px 12px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+        
+        .logo {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 30px;
+            background: hsl(45, 25%, 95%);
+            border: 2px solid hsl(0, 0%, 60%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Cinzel', serif;
+            font-weight: 600;
+            font-size: 24px;
+            color: hsl(0, 0%, 25%);
+        }
+        
+        .title {
+            font-family: 'Cinzel', serif;
+            font-size: 48px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: hsl(0, 0%, 15%);
+        }
+        
+        .subtitle {
+            font-size: 24px;
+            font-style: italic;
+            margin-bottom: 30px;
+            color: hsl(0, 0%, 25%);
+        }
+        
+        .description {
+            font-size: 20px;
+            line-height: 1.6;
+            margin-bottom: 40px;
+            color: hsl(0, 0%, 35%);
+        }
+        
+        .contact-info {
+            background: hsl(45, 25%, 95%);
+            padding: 30px;
+            border-radius: 12px;
+            border: 2px solid hsl(0, 0%, 70%);
+            margin-top: 30px;
+        }
+        
+        .contact-title {
+            font-family: 'Cinzel', serif;
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: hsl(0, 0%, 15%);
+        }
+        
+        .contact-item {
+            font-size: 18px;
+            margin-bottom: 15px;
+            color: hsl(0, 0%, 25%);
+        }
+        
+        .contact-item strong {
+            color: hsl(0, 0%, 15%);
+        }
+        
+        .divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 30px 0;
+            color: hsl(0, 0%, 60%);
+        }
+        
+        .divider::before,
+        .divider::after {
+            content: '';
+            height: 1px;
+            width: 50px;
+            background: hsl(0, 0%, 60%);
+        }
+        
+        .divider span {
+            margin: 0 20px;
+            font-size: 18px;
+        }
+        
+        .ornament {
+            position: absolute;
+            width: 24px;
+            height: 24px;
+            opacity: 0.6;
+        }
+        
+        .ornament.top-left {
+            top: 15px;
+            left: 15px;
+        }
+        
+        .ornament.top-right {
+            top: 15px;
+            right: 15px;
+            transform: scaleX(-1);
+        }
+        
+        .ornament.bottom-left {
+            bottom: 15px;
+            left: 15px;
+            transform: scaleY(-1);
+        }
+        
+        .ornament.bottom-right {
+            bottom: 15px;
+            right: 15px;
+            transform: scale(-1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Decorative ornaments -->
+        <div class="ornament top-left">✦</div>
+        <div class="ornament top-right">✦</div>
+        <div class="ornament bottom-left">✦</div>
+        <div class="ornament bottom-right">✦</div>
+        
+        <div class="logo">
+            NIKRMANA
+        </div>
+        
+        <h1 class="title">NIKRMANA</h1>
+        <p class="subtitle">Zavod za dvig zavesti</p>
+        
+        <div class="divider">
+            <span>✦</span>
+        </div>
+        
+        <p class="description">
+            Naša spletna stran je trenutno v obdelavi.<br>
+            Pripravljamo nekaj posebnega za vas!
+        </p>
+        
+        <div class="contact-info">
+            <h2 class="contact-title">Za več informacij nas kontaktirajte</h2>
+            
+            <div class="contact-item">
+                <strong>E-pošta:</strong> info@nikrmanapesnica.si
+            </div>
+            
+            <div class="contact-item">
+                <strong>Telefon:</strong> +386 XX XXX XXX
+            </div>
+            
+            <div class="divider">
+                <span>✦</span>
+            </div>
+            
+            <div class="contact-item" style="font-style: italic; margin-top: 20px;">
+                "Naravna pot, ki nežno a globoko preobraža in ponovno vzpostavlja 
+                naravno ravnovesje telesa, čustev in duha"
+            </div>
+        </div>
+    </div>
+</body>
+</html>

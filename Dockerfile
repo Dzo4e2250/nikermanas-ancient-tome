@@ -37,8 +37,8 @@ COPY nginx.conf /etc/nginx/conf.d/default.conf
 # directory. Only the contents of `dist` are needed at runtime.
 COPY --from=build /app/dist /usr/share/nginx/html
 
-# Expose port 80 so Docker will be able to map a host port to the container
-EXPOSE 80
+# Expose ports 80 and 5677 so Docker will be able to map host ports to the container
+EXPOSE 80 5677
 
 # Use the default Nginx start command
 CMD ["nginx", "-g", "daemon off;"]
