@@ -11,6 +11,7 @@ const Navigation = () => {
   const [lastScrollY, setLastScrollY] = useState(0);
   const [bookingDialogOpen, setBookingDialogOpen] = useState(false);
   const [session, setSession] = useState<Session | null>(null);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
     // Auth state listener
@@ -35,6 +36,9 @@ const Navigation = () => {
       if (!ticking) {
         requestAnimationFrame(() => {
           const currentScrollY = window.scrollY;
+          
+          // Check if we're past the hero section (approximately)
+          setIsScrolled(currentScrollY > window.innerHeight * 0.8);
           
           // Show navigation at the very top
           if (currentScrollY < 10) {
@@ -87,8 +91,9 @@ const Navigation = () => {
 
   return (
     <nav className={cn(
-      "fixed top-0 w-full z-50 transition-transform duration-300 ease-in-out",
-      isVisible ? "translate-y-0" : "-translate-y-full"
+      "fixed top-0 w-full z-50 transition-all duration-300 ease-in-out",
+      isVisible ? "translate-y-0" : "-translate-y-full",
+      isScrolled ? "bg-parchment/95 backdrop-blur-sm shadow-lg" : "bg-transparent"
     )}>
       <div className="max-w-6xl mx-auto px-6">
         <div className="flex items-center justify-between h-16">
