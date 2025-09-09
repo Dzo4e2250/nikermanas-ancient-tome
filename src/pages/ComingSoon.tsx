@@ -3,10 +3,10 @@ const ComingSoon = () => {
     <div className="min-h-screen bg-gradient-to-br from-background to-card flex items-center justify-center font-ancient bg-fixed px-4 py-8">
       <div className="text-center max-w-2xl mx-auto p-6 md:p-10 bg-parchment border-2 md:border-4 border-ancient-silver rounded-xl md:rounded-2xl shadow-mystical relative">
         {/* Decorative ornaments */}
-        <div className="absolute top-4 left-4 opacity-60"><img src="/lovable-uploads/ad23fb3e-4e2f-4d83-8500-3632c8984d16.png" alt="raven" className="w-6 h-6" /></div>
-        <div className="absolute top-4 right-4 opacity-60 transform scale-x-[-1]"><img src="/lovable-uploads/ad23fb3e-4e2f-4d83-8500-3632c8984d16.png" alt="raven" className="w-6 h-6" /></div>
-        <div className="absolute bottom-4 left-4 opacity-60 transform scale-y-[-1]"><img src="/lovable-uploads/ad23fb3e-4e2f-4d83-8500-3632c8984d16.png" alt="raven" className="w-6 h-6" /></div>
-        <div className="absolute bottom-4 right-4 opacity-60 transform scale-[-1]"><img src="/lovable-uploads/ad23fb3e-4e2f-4d83-8500-3632c8984d16.png" alt="raven" className="w-6 h-6" /></div>
+        <div className="absolute top-4 left-4 opacity-60 hidden md:block"><img src="/lovable-uploads/ad23fb3e-4e2f-4d83-8500-3632c8984d16.png" alt="raven" className="w-6 h-6" /></div>
+        <div className="absolute top-4 right-4 opacity-60 transform scale-x-[-1] hidden md:block"><img src="/lovable-uploads/ad23fb3e-4e2f-4d83-8500-3632c8984d16.png" alt="raven" className="w-6 h-6" /></div>
+        <div className="absolute bottom-4 left-4 opacity-60 transform scale-y-[-1] hidden md:block"><img src="/lovable-uploads/ad23fb3e-4e2f-4d83-8500-3632c8984d16.png" alt="raven" className="w-6 h-6" /></div>
+        <div className="absolute bottom-4 right-4 opacity-60 transform scale-[-1] hidden md:block"><img src="/lovable-uploads/ad23fb3e-4e2f-4d83-8500-3632c8984d16.png" alt="raven" className="w-6 h-6" /></div>
         
         {/* Logo circle */}
         <div className="w-24 h-24 md:w-32 md:h-32 mx-auto mb-6 md:mb-8 flex items-center justify-center">
