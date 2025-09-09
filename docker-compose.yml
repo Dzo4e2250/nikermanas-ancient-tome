@@ -1,17 +1,11 @@
 version: "3.8"
 
-networks:
-  edge:
-
 services:
   web:
-#    image: ghcr.io/dzo4e2250/nikermanas-ancient-tome:latest
+    image: ghcr.io/dzo4e2250/nikermanas-ancient-tome:latest
     container_name: nikermanas-web
-        build: . .
     ports:
       - "5678:80"
-    networks:
-      - edge
     restart: unless-stopped
     healthcheck:
       test: ["CMD", "wget", "-qO-", "http://localhost/"]
@@ -19,25 +13,10 @@ services:
       timeout: 10s
       retries: 5
 
-  cloudflared:
-    image: cloudflare/cloudflared:latest
-    container_name: cloudflared
-    command: tunnel --no-autoupdate run
-    volumes:
-      - /root/cloudflared:/etc/cloudflared
-    networks:
-      - edge
-    depends_on:
-      web:
-        condition: service_healthy
-    restart: unless-stopped
-
   watchtower:
     image: containrrr/watchtower:latest
     container_name: watchtower
     restart: unless-stopped
-    networks:
-      - edge
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     command: --interval 300 --cleanup
