@@ -1,41 +1,109 @@
 # NIKRMANA - Zavod za dvig zavesti
 
-Spletna stran za NIKRMANA zavod za dvig zavesti.
+Spletna stran za NIKRMANA zavod za dvig zavesti z ločeno "Kmalu prihaja" stranjo.
 
-## Struktura projekta
+## 🚀 Deployment na nov server
 
-Projekt vsebuje dve aplikaciji:
+### Predpogoji
+- Docker in Docker Compose nameščena
+- Git nameščen
 
-### 1. Glavna aplikacija (/)
-Glavna React aplikacija z vsemi funkcionalnostmi zavoda.
-
-### 2. "Kmalu prihaja" stran (/coming-soon)
-Minimalna stran, ki se prikaže med razvozom glavne aplikacije.
-
-## Docker Compose opcije
-
-### Zagon glavne aplikacije
+### 1. Kloniraj repozitorij
 ```bash
-docker-compose up -d
+git clone <URL-repozitorija>
+cd <ime-repozitorija>
 ```
-Aplikacija bo dostopna na http://localhost:3000
 
-### Zagon "Kmalu prihaja" strani
+### 2. Pripravi logo za "Kmalu prihaja" stran
 ```bash
-docker-compose -f docker-compose.coming-soon.yml up -d
+# Kopiraj logo iz glavne aplikacije v coming-soon direktorij
+cp /lovable-uploads/7af9c884-5752-43f5-9688-cc74a903a9dd.png coming-soon/public/logo.png
 ```
-Stran bo dostopna na http://localhost:3001
 
-### Ustavitev
+### 3. Poženi ustrezno aplikacijo
+
+#### Za "Kmalu prihaja" stran (med razvojem)
 ```bash
-# Glavna aplikacija
+# Build in zagon
+docker-compose -f docker-compose.coming-soon.yml up -d --build
+
+# Preveri status
+docker-compose -f docker-compose.coming-soon.yml ps
+
+# Oglej si loge
+docker-compose -f docker-compose.coming-soon.yml logs -f
+```
+**Dostop**: http://localhost:3001
+
+#### Za glavno aplikacijo (ko je pripravljena)
+```bash
+# Ustavi "Kmalu prihaja" stran
+docker-compose -f docker-compose.coming-soon.yml down
+
+# Build in zagon glavne aplikacije
+docker-compose up -d --build
+
+# Preveri status
+docker-compose ps
+
+# Oglej si loge
+docker-compose logs -f
+```
+**Dostop**: http://localhost:3000
+
+## 🔄 Upravljanje
+
+### Posodabljanje kode
+```bash
+# Povleci najnovejše spremembe
+git pull origin main
+
+# Obnovi ustrezno aplikacijo
+# Za "Kmalu prihaja":
+docker-compose -f docker-compose.coming-soon.yml up -d --build
+
+# Za glavno aplikacijo:
+docker-compose up -d --build
+```
+
+### Ustavitev aplikacij
+```bash
+# Ustavi "Kmalu prihaja" stran
+docker-compose -f docker-compose.coming-soon.yml down
+
+# Ustavi glavno aplikacijo
 docker-compose down
 
-# "Kmalu prihaja" stran
-docker-compose -f docker-compose.coming-soon.yml down
+# Ustavi vse in očisti
+docker-compose down --volumes --remove-orphans
+docker-compose -f docker-compose.coming-soon.yml down --volumes --remove-orphans
 ```
 
-## Development
+### Preverjanje statusa
+```bash
+# Oglej si tekoče kontejnerje
+docker ps
+
+# Oglej si loge
+docker-compose logs
+docker-compose -f docker-compose.coming-soon.yml logs
+```
+
+## 📁 Struktura projekta
+
+```
+.
+├── coming-soon/                    # Ločena "Kmalu prihaja" aplikacija
+│   ├── src/
+│   ├── public/logo.png            # Logo za coming-soon stran
+│   ├── Dockerfile
+│   └── package.json
+├── docker-compose.yml             # Glavna aplikacija (port 3000)
+├── docker-compose.coming-soon.yml # "Kmalu prihaja" stran (port 3001)
+└── README.md
+```
+
+## 🔧 Development (brez Docker)
 
 ### Glavna aplikacija
 ```bash
@@ -46,33 +114,68 @@ npm run dev
 ### "Kmalu prihaja" stran
 ```bash
 cd coming-soon
-npm install
+npm install  
 npm run dev
 ```
 
-## Workflow za produkcijo
+## 🎯 Workflow za produkcijo
 
-1. **Med razvozom**: Zaženite "Kmalu prihaja" stran
-   ```bash
-   docker-compose -f docker-compose.coming-soon.yml up -d
-   ```
+### 1. Začetna faza (med razvojem glavne strani)
+```bash
+# Kloniraj in pripravi
+git clone <URL-repozitorija>
+cd <ime-repozitorija>
+cp /lovable-uploads/7af9c884-5752-43f5-9688-cc74a903a9dd.png coming-soon/public/logo.png
 
-2. **Ko je glavna aplikacija pripravljena**: Ustavite "Kmalu prihaja" in zaženite glavno
-   ```bash
-   docker-compose -f docker-compose.coming-soon.yml down
-   docker-compose up -d
-   ```
+# Zaženi "Kmalu prihaja" stran
+docker-compose -f docker-compose.coming-soon.yml up -d --build
+```
 
-## Uporaba logoov
+### 2. Ko je glavna aplikacija pripravljena
+```bash
+# Ustavi "Kmalu prihaja"
+docker-compose -f docker-compose.coming-soon.yml down
 
-- **Glavna aplikacija**: Logo morate ručno kopirati iz `/lovable-uploads/7af9c884-5752-43f5-9688-cc74a903a9dd.png`
-- **"Kmalu prihaja" stran**: Logo je že vključen v `/coming-soon/public/logo.png`
+# Zaženi glavno aplikacijo
+docker-compose up -d --build
+```
 
-## Kontakt
+### 3. Za hitro preklapljanje nazaj na "Kmalu prihaja"
+```bash
+docker-compose down
+docker-compose -f docker-compose.coming-soon.yml up -d
+```
+
+## 🛠️ Troubleshooting
+
+### Preveri, ali se aplikacija izvaja
+```bash
+# Preveri odprt port
+curl http://localhost:3001  # za coming-soon
+curl http://localhost:3000  # za glavno aplikacijo
+
+# Preveri Docker kontejnerje
+docker ps -a
+```
+
+### Očisti Docker cache
+```bash
+docker system prune -a
+docker-compose -f docker-compose.coming-soon.yml build --no-cache
+docker-compose build --no-cache
+```
+
+### Oglej si podrobne loge
+```bash
+docker-compose -f docker-compose.coming-soon.yml logs --tail=50 -f
+docker-compose logs --tail=50 -f
+```
+
+## 📞 Kontakt
 
 - **E-pošta**: info@nikrmanapesnica.si
 - **Telefon**: 051 358 273
 
 ---
 
-*Projekt prvotno ustvarjen in objavljen preko [Lovable](https://lovable.dev)*
+*Projekt ustvarjen z [Lovable](https://lovable.dev)*
