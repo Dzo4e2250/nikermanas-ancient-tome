@@ -9,8 +9,12 @@ const ComingSoon = () => {
         <div className="absolute bottom-4 right-4 text-ancient-silver text-2xl opacity-60 transform scale-[-1]">✦</div>
         
         {/* Logo circle */}
-        <div className="w-32 h-32 mx-auto mb-8 bg-card border-2 border-ancient-silver rounded-full flex items-center justify-center font-gothic font-semibold text-2xl text-primary">
-          NIKRMANA
+        <div className="w-32 h-32 mx-auto mb-8 bg-card border-2 border-ancient-silver rounded-full flex items-center justify-center p-4">
+          <img 
+            src="/lovable-uploads/f1bc1069-4c8c-46a7-85d8-285882dbb31d.png" 
+            alt="NIKRMANA logo" 
+            className="w-full h-full object-contain"
+          />
         </div>
         
         <h1 className="font-gothic text-5xl font-semibold mb-6 text-primary">NIKRMANA</h1>
