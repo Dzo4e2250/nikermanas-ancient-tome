@@ -1,0 +1,41 @@
+services:
+  web:
+    build:
+      context: .
+      args:
+        VITE_COMING_SOON: ${VITE_COMING_SOON:-true}
+    container_name: nikrmana-web
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:5680:80"
+    networks:
+      - default
+      - proxy
+
+  db:
+    image: postgres:16-alpine
+    container_name: nikrmana-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-nikrmana}
+      POSTGRES_USER: ${POSTGRES_USER:-nikrmana}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Nastavi POSTGRES_PASSWORD v .env}
+    volumes:
+      - db-data:/var/lib/postgresql/data
+      - ./db/init:/docker-entrypoint-initdb.d:ro
+    # Samo lokalno na strežniku (dostop prek SSH tunela), nikoli javno.
+    ports:
+      - "127.0.0.1:55433:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  db-data:
+
+networks:
+  proxy:
+    name: npm_npm_network
+    external: true
