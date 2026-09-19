@@ -105,11 +105,28 @@ export default {
 					to: {
 						height: '0'
 					}
+				},
+				// Vrana prileti od leve zgoraj in se umiri na svojem mestu
+				'vrana-prilet': {
+					'0%': { opacity: '0', transform: 'translate(-60vw, -30vh) rotate(-18deg) scale(0.5)' },
+					'60%': { opacity: '1', transform: 'translate(12px, 8px) rotate(4deg) scale(1.04)' },
+					'100%': { opacity: '1', transform: 'translate(0, 0) rotate(0) scale(1)' }
+				},
+				'vrana-lebdi': {
+					'0%, 100%': { transform: 'translateY(0)' },
+					'50%': { transform: 'translateY(-8px)' }
+				},
+				'prikazi': {
+					from: { opacity: '0', transform: 'translateY(12px)' },
+					to: { opacity: '1', transform: 'translateY(0)' }
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'vrana-prilet': 'vrana-prilet 1.8s cubic-bezier(0.22, 1, 0.36, 1) both',
+				'vrana-lebdi': 'vrana-lebdi 4s ease-in-out 2.4s infinite',
+				'prikazi': 'prikazi 0.9s ease-out both'
 			}
 		}
 	},

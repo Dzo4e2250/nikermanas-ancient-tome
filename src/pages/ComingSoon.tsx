@@ -1,43 +1,78 @@
+import { Mail, Phone, MapPin } from "lucide-react";
 import OrnamentalDivider from "@/components/OrnamentalDivider";
+
+const EMAIL = "ztanja7@gmail.com";
+const TELEFON = "040 811 870";
+const TELEFON_POVEZAVA = "tel:+38640811870";
+
+const zamik = (s: number) => ({ animationDelay: `${s}s` });
 
 const ComingSoon = () => {
   return (
     <main
-      className="min-h-screen flex items-center justify-center relative bg-cover bg-center bg-no-repeat px-6 py-16"
+      className="min-h-screen flex items-center justify-center bg-cover bg-center bg-no-repeat px-4 py-10 overflow-hidden"
       style={{ backgroundImage: "url(/images/ozadje-pergament.png)" }}
     >
-      <div className="absolute top-6 left-6 text-3xl md:text-4xl text-ornament opacity-60">❦</div>
-      <div className="absolute top-6 right-6 text-3xl md:text-4xl text-ornament opacity-60 transform scale-x-[-1]">❦</div>
-      <div className="absolute bottom-6 left-6 text-3xl md:text-4xl text-ornament opacity-60 transform scale-y-[-1]">❦</div>
-      <div className="absolute bottom-6 right-6 text-3xl md:text-4xl text-ornament opacity-60 transform scale-[-1]">❦</div>
+      <article
+        className="relative w-full max-w-xl border-2 border-ornament bg-[hsl(var(--parchment)/0.85)] shadow-mystical backdrop-blur-[2px] motion-safe:animate-prikazi
+          before:absolute before:inset-2 before:border before:border-ornament/40 before:pointer-events-none
+          after:absolute after:inset-1 after:border after:border-ornament/20 after:pointer-events-none"
+      >
+        <span aria-hidden className="absolute top-3 left-4 text-2xl text-ornament opacity-60">❦</span>
+        <span aria-hidden className="absolute top-3 right-4 text-2xl text-ornament opacity-60 scale-x-[-1]">❦</span>
+        <span aria-hidden className="absolute bottom-3 left-4 text-2xl text-ornament opacity-60 scale-y-[-1]">❦</span>
+        <span aria-hidden className="absolute bottom-3 right-4 text-2xl text-ornament opacity-60 scale-[-1]">❦</span>
 
-      <div className="text-center max-w-3xl mx-auto relative z-10">
-        <img src="/images/logo.png" alt="NIKRMANA logo" className="w-auto h-40 md:h-60 mx-auto mb-2" />
+        <div className="relative z-10 px-6 py-10 sm:px-12 sm:py-12 text-center">
+          <div className="motion-safe:animate-vrana-prilet" style={zamik(0.6)}>
+            <img
+              src="/images/vrana.png"
+              alt=""
+              className="h-28 sm:h-36 w-auto mx-auto motion-safe:animate-vrana-lebdi"
+            />
+          </div>
 
-        <p className="font-ancient text-lg md:text-xl text-black italic">Zavod za dvig zavesti</p>
+          <h1 className="motion-safe:animate-prikazi" style={zamik(1.9)}>
+            <img src="/images/napis-nikrmana.png" alt="NIKRMANA" className="h-10 sm:h-14 w-auto mx-auto mt-4" />
+          </h1>
 
-        <OrnamentalDivider />
+          <div className="motion-safe:animate-prikazi" style={zamik(2.2)}>
+            <p className="font-ancient text-lg italic text-black mt-3">Zavod za dvig zavesti</p>
 
-        <h1 className="font-gothic text-3xl md:text-5xl font-semibold tracking-wide text-black mb-6">
-          Spletna stran prihaja kmalu
-        </h1>
+            <OrnamentalDivider />
 
-        <p className="font-ancient text-base md:text-lg text-black leading-relaxed max-w-2xl mx-auto mb-2">
-          Energoterapije • Meditacije • Srečanja
-        </p>
-        <p className="font-ancient text-base md:text-lg text-black leading-relaxed max-w-2xl mx-auto mb-10">
-          Pripravljamo novo spletno stran. Do takrat smo vam na voljo po e-pošti.
-        </p>
+            <h2 className="font-gothic text-2xl sm:text-3xl font-semibold tracking-wide text-black mb-4">
+              Spletna stran prihaja kmalu
+            </h2>
 
-        <a
-          href="mailto:nikrmanapesnica@gmail.com"
-          className="inline-block font-gothic text-sm md:text-base tracking-widest uppercase border border-black/70 text-black px-6 py-3 hover:bg-black hover:text-[hsl(var(--parchment))] transition-colors"
-        >
-          nikrmanapesnica@gmail.com
-        </a>
+            <p className="font-ancient text-base sm:text-lg text-black mb-1">
+              Energoterapije • Meditacije • Srečanja
+            </p>
+            <p className="font-ancient text-base text-black/80 leading-relaxed mb-8">
+              Pripravljamo novo spletno stran. Do takrat smo vam na voljo po e-pošti ali telefonu.
+            </p>
 
-        <p className="font-ancient text-sm text-black/70 mt-8">Pesnica pri Mariboru</p>
-      </div>
+            <ul className="font-ancient text-base sm:text-lg text-black space-y-3 inline-flex flex-col items-start mx-auto">
+              <li>
+                <a href={`mailto:${EMAIL}`} className="flex items-center gap-3 hover:underline underline-offset-4">
+                  <Mail className="h-5 w-5 text-ornament shrink-0" aria-hidden />
+                  {EMAIL}
+                </a>
+              </li>
+              <li>
+                <a href={TELEFON_POVEZAVA} className="flex items-center gap-3 hover:underline underline-offset-4">
+                  <Phone className="h-5 w-5 text-ornament shrink-0" aria-hidden />
+                  {TELEFON}
+                </a>
+              </li>
+              <li className="flex items-center gap-3 text-black/80">
+                <MapPin className="h-5 w-5 text-ornament shrink-0" aria-hidden />
+                Pesnica pri Mariboru
+              </li>
+            </ul>
+          </div>
+        </div>
+      </article>
     </main>
   );
 };
