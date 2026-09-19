@@ -1,5 +1,6 @@
 import { Mail, Phone, MapPin } from "lucide-react";
 import OrnamentalDivider from "@/components/OrnamentalDivider";
+import VranaOrnament from "@/components/VranaOrnament";
 
 const EMAIL = "ztanja7@gmail.com";
 const TELEFON = "040 811 870";
@@ -18,10 +19,10 @@ const ComingSoon = () => {
           before:absolute before:inset-2 before:border before:border-ornament/40 before:pointer-events-none
           after:absolute after:inset-1 after:border after:border-ornament/20 after:pointer-events-none"
       >
-        <span aria-hidden className="absolute top-3 left-4 text-2xl text-ornament opacity-60">❦</span>
-        <span aria-hidden className="absolute top-3 right-4 text-2xl text-ornament opacity-60 scale-x-[-1]">❦</span>
-        <span aria-hidden className="absolute bottom-3 left-4 text-2xl text-ornament opacity-60 scale-y-[-1]">❦</span>
-        <span aria-hidden className="absolute bottom-3 right-4 text-2xl text-ornament opacity-60 scale-[-1]">❦</span>
+        <VranaOrnament className="absolute top-4 left-4 h-7 opacity-70" />
+        <VranaOrnament zrcaljeno className="absolute top-4 right-4 h-7 opacity-70" />
+        <VranaOrnament className="absolute bottom-4 left-4 h-7 opacity-70" />
+        <VranaOrnament zrcaljeno className="absolute bottom-4 right-4 h-7 opacity-70" />
 
         <div className="relative z-10 px-6 py-10 sm:px-12 sm:py-12 text-center">
           <div className="motion-safe:animate-vrana-prilet" style={zamik(0.6)}>

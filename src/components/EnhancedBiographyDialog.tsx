@@ -5,6 +5,7 @@ import AncientTitle from "./AncientTitle";
 import MysticalCard from "./MysticalCard";
 import { removeBackground, loadImageFromSrc } from "@/lib/backgroundRemoval";
 import { toast } from "sonner";
+import VranaOrnament from "@/components/VranaOrnament";
 
 interface EnhancedBiographyDialogProps {
   person: "tanja" | "edo" | "santiago";
@@ -164,7 +165,7 @@ const EnhancedBiographyDialog = ({ person, avatar, name, children }: EnhancedBio
             <div className="grid md:grid-cols-2 gap-4">
               {bio.specialties.map((specialty, index) => (
                 <div key={index} className="flex items-center">
-                  <span className="text-ornament mr-3">❦</span>
+                  <VranaOrnament className="h-4 mr-3 shrink-0" />
                   <span className="font-ancient text-muted-foreground">{specialty}</span>
                 </div>
               ))}

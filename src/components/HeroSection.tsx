@@ -2,6 +2,7 @@ import { useState } from "react";
 import AncientTitle from "./AncientTitle";
 import OrnamentalDivider from "./OrnamentalDivider";
 import FreeConsultationDialog from "./FreeConsultationDialog";
+import VranaOrnament from "@/components/VranaOrnament";
 
 const HeroSection = () => {
   const [bookingDialogOpen, setBookingDialogOpen] = useState(false);
@@ -9,10 +10,10 @@ const HeroSection = () => {
   return (
     <section className="min-h-screen flex items-center justify-center relative pt-16 bg-cover bg-center bg-no-repeat" style={{backgroundImage: 'url(/images/ozadje-pergament.png)'}}>{/* pt-16 for navigation space */}
       {/* Decorative corner ornaments */}
-      <div className="absolute top-8 left-8 text-4xl text-ornament opacity-60">❦</div>
-      <div className="absolute top-8 right-8 text-4xl text-ornament opacity-60 transform scale-x-[-1]">❦</div>
-      <div className="absolute bottom-8 left-8 text-4xl text-ornament opacity-60 transform scale-y-[-1]">❦</div>
-      <div className="absolute bottom-8 right-8 text-4xl text-ornament opacity-60 transform scale-[-1]">❦</div>
+      <VranaOrnament className="absolute top-8 left-8 h-10 opacity-70" />
+      <VranaOrnament zrcaljeno className="absolute top-8 right-8 h-10 opacity-70" />
+      <VranaOrnament className="absolute bottom-8 left-8 h-10 opacity-70" />
+      <VranaOrnament zrcaljeno className="absolute bottom-8 right-8 h-10 opacity-70" />
       
       <div className="text-center max-w-4xl mx-auto px-6 relative z-10">
         <div className="relative">

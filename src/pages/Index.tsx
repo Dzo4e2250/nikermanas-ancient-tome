@@ -5,6 +5,7 @@ import ProcessSection from "@/components/ProcessSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import CallToActionSection from "@/components/CallToActionSection";
 import EventsSection from "@/components/EventsSection";
+import VranaOrnament from "@/components/VranaOrnament";
 
 
 const Index = () => {
@@ -31,7 +32,7 @@ const Index = () => {
       {/* Ancient footer */}
       <footer className="bg-primary text-primary-foreground py-8 relative">
         <div className="max-w-4xl mx-auto px-6 text-center">
-          <div className="text-2xl mb-4 text-mystical-glow">❦</div>
+          <VranaOrnament className="h-8 mb-4 brightness-0 invert opacity-80" />
           <p className="font-gothic text-lg mb-2">NIKRMANA</p>
           <p className="font-ancient text-sm opacity-80">
             Zavod za dvig zavesti • Pesnica pri Mariboru
